@@ -1,0 +1,525 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		11722380829FEDB210B2A885 /* Pods_myBabyVaccineNote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11839AF319B7C7B770F4B89 /* Pods_myBabyVaccineNote.framework */; };
+		301315E427041BC600683F66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301315E327041BC600683F66 /* AppDelegate.swift */; };
+		301315E627041BC600683F66 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301315E527041BC600683F66 /* SceneDelegate.swift */; };
+		301315E827041BC600683F66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301315E727041BC600683F66 /* ViewController.swift */; };
+		301315EB27041BC600683F66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 301315E927041BC600683F66 /* Main.storyboard */; };
+		301315ED27041BC700683F66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 301315EC27041BC700683F66 /* Assets.xcassets */; };
+		301315F027041BC700683F66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 301315EE27041BC700683F66 /* LaunchScreen.storyboard */; };
+		301315F827041EF400683F66 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 301315F727041EF400683F66 /* OpenGLES.framework */; };
+		301315FA27041EFE00683F66 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 301315F927041EFE00683F66 /* SystemConfiguration.framework */; };
+		301315FC27041F0700683F66 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 301315FB27041F0700683F66 /* CoreLocation.framework */; };
+		301315FE27041F1100683F66 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 301315FD27041F1100683F66 /* QuartzCore.framework */; };
+		301316102704258F00683F66 /* DaumMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3013160F2704258F00683F66 /* DaumMap.framework */; };
+		301316112704265B00683F66 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3013160127041F2D00683F66 /* libsqlite3.tbd */; };
+		301316122704268400683F66 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 301315FF27041F1E00683F66 /* libc++.tbd */; };
+		301316132704268E00683F66 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3013160027041F2600683F66 /* libxml2.tbd */; };
+		301316142704269500683F66 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3013160127041F2D00683F66 /* libsqlite3.tbd */; };
+		3013161627042A1A00683F66 /* IOS_DaumMap_SDK_1.4.0 in Resources */ = {isa = PBXBuildFile; fileRef = 3013161527042A1A00683F66 /* IOS_DaumMap_SDK_1.4.0 */; };
+		3013161927042C9D00683F66 /* Global Extentions in Resources */ = {isa = PBXBuildFile; fileRef = 3013161827042C9D00683F66 /* Global Extentions */; };
+		3013161D2704390D00683F66 /* DiseaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3013161C2704390C00683F66 /* DiseaseCollectionViewCell.swift */; };
+		3013161F27043C5E00683F66 /* VaccineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3013161E27043C5E00683F66 /* VaccineCollectionViewCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		301316092704241500683F66 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		301315E027041BC600683F66 /* myBabyVaccineNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myBabyVaccineNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		301315E327041BC600683F66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		301315E527041BC600683F66 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		301315E727041BC600683F66 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		301315EA27041BC600683F66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		301315EC27041BC700683F66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		301315EF27041BC700683F66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		301315F127041BC700683F66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		301315F727041EF400683F66 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		301315F927041EFE00683F66 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		301315FB27041F0700683F66 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		301315FD27041F1100683F66 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		301315FF27041F1E00683F66 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		3013160027041F2600683F66 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		3013160127041F2D00683F66 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		301316052704201B00683F66 /* BridgeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgeHeader.h; sourceTree = "<group>"; };
+		3013160F2704258F00683F66 /* DaumMap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DaumMap.framework; sourceTree = "<group>"; };
+		3013161527042A1A00683F66 /* IOS_DaumMap_SDK_1.4.0 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = IOS_DaumMap_SDK_1.4.0; sourceTree = "<group>"; };
+		3013161827042C9D00683F66 /* Global Extentions */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Global Extentions"; path = "myBabyVaccineNote/Global Extentions"; sourceTree = SOURCE_ROOT; };
+		3013161C2704390C00683F66 /* DiseaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		3013161E27043C5E00683F66 /* VaccineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccineCollectionViewCell.swift; sourceTree = "<group>"; };
+		38AC0467EBAC23B2BD53876C /* Pods-myBabyVaccineNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myBabyVaccineNote.release.xcconfig"; path = "Target Support Files/Pods-myBabyVaccineNote/Pods-myBabyVaccineNote.release.xcconfig"; sourceTree = "<group>"; };
+		A11839AF319B7C7B770F4B89 /* Pods_myBabyVaccineNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myBabyVaccineNote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBC64FFC57014BEACF6B8002 /* Pods-myBabyVaccineNote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myBabyVaccineNote.debug.xcconfig"; path = "Target Support Files/Pods-myBabyVaccineNote/Pods-myBabyVaccineNote.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		301315DD27041BC600683F66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				301316142704269500683F66 /* libsqlite3.tbd in Frameworks */,
+				301315FE27041F1100683F66 /* QuartzCore.framework in Frameworks */,
+				301315FC27041F0700683F66 /* CoreLocation.framework in Frameworks */,
+				301316122704268400683F66 /* libc++.tbd in Frameworks */,
+				301316112704265B00683F66 /* libsqlite3.tbd in Frameworks */,
+				11722380829FEDB210B2A885 /* Pods_myBabyVaccineNote.framework in Frameworks */,
+				301315FA27041EFE00683F66 /* SystemConfiguration.framework in Frameworks */,
+				301316132704268E00683F66 /* libxml2.tbd in Frameworks */,
+				301316102704258F00683F66 /* DaumMap.framework in Frameworks */,
+				301315F827041EF400683F66 /* OpenGLES.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		301315D727041BC600683F66 = {
+			isa = PBXGroup;
+			children = (
+				301315E227041BC600683F66 /* myBabyVaccineNote */,
+				301315E127041BC600683F66 /* Products */,
+				A07779DB34F7DCD93F073BF4 /* Pods */,
+				742F13DBB6A78A3A8DF3F010 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		301315E127041BC600683F66 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				301315E027041BC600683F66 /* myBabyVaccineNote.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		301315E227041BC600683F66 /* myBabyVaccineNote */ = {
+			isa = PBXGroup;
+			children = (
+				3013161B270438E400683F66 /* Scene */,
+				3013161A270438D700683F66 /* ReusableCell */,
+				3013161727042C6F00683F66 /* Support */,
+				301316042704200A00683F66 /* Header */,
+				301315E327041BC600683F66 /* AppDelegate.swift */,
+				301315E527041BC600683F66 /* SceneDelegate.swift */,
+				301315E927041BC600683F66 /* Main.storyboard */,
+				301315EC27041BC700683F66 /* Assets.xcassets */,
+				301315EE27041BC700683F66 /* LaunchScreen.storyboard */,
+				301315F127041BC700683F66 /* Info.plist */,
+			);
+			path = myBabyVaccineNote;
+			sourceTree = "<group>";
+		};
+		301316042704200A00683F66 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				301316052704201B00683F66 /* BridgeHeader.h */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		3013161727042C6F00683F66 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				3013161827042C9D00683F66 /* Global Extentions */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		3013161A270438D700683F66 /* ReusableCell */ = {
+			isa = PBXGroup;
+			children = (
+				3013161C2704390C00683F66 /* DiseaseCollectionViewCell.swift */,
+				3013161E27043C5E00683F66 /* VaccineCollectionViewCell.swift */,
+			);
+			path = ReusableCell;
+			sourceTree = "<group>";
+		};
+		3013161B270438E400683F66 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				301315E727041BC600683F66 /* ViewController.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		742F13DBB6A78A3A8DF3F010 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3013161527042A1A00683F66 /* IOS_DaumMap_SDK_1.4.0 */,
+				3013160F2704258F00683F66 /* DaumMap.framework */,
+				3013160127041F2D00683F66 /* libsqlite3.tbd */,
+				3013160027041F2600683F66 /* libxml2.tbd */,
+				301315FF27041F1E00683F66 /* libc++.tbd */,
+				301315FD27041F1100683F66 /* QuartzCore.framework */,
+				301315FB27041F0700683F66 /* CoreLocation.framework */,
+				301315F927041EFE00683F66 /* SystemConfiguration.framework */,
+				301315F727041EF400683F66 /* OpenGLES.framework */,
+				A11839AF319B7C7B770F4B89 /* Pods_myBabyVaccineNote.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A07779DB34F7DCD93F073BF4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DBC64FFC57014BEACF6B8002 /* Pods-myBabyVaccineNote.debug.xcconfig */,
+				38AC0467EBAC23B2BD53876C /* Pods-myBabyVaccineNote.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		301315DF27041BC600683F66 /* myBabyVaccineNote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 301315F427041BC700683F66 /* Build configuration list for PBXNativeTarget "myBabyVaccineNote" */;
+			buildPhases = (
+				391DBA7D3B66DA2DC3CFFE31 /* [CP] Check Pods Manifest.lock */,
+				301315DC27041BC600683F66 /* Sources */,
+				301315DD27041BC600683F66 /* Frameworks */,
+				301315DE27041BC600683F66 /* Resources */,
+				74215E6F546FE3B75317B133 /* [CP] Embed Pods Frameworks */,
+				301316092704241500683F66 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = myBabyVaccineNote;
+			productName = myBabyVaccineNote;
+			productReference = 301315E027041BC600683F66 /* myBabyVaccineNote.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		301315D827041BC600683F66 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					301315DF27041BC600683F66 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+				};
+			};
+			buildConfigurationList = 301315DB27041BC600683F66 /* Build configuration list for PBXProject "myBabyVaccineNote" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 301315D727041BC600683F66;
+			productRefGroup = 301315E127041BC600683F66 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				301315DF27041BC600683F66 /* myBabyVaccineNote */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		301315DE27041BC600683F66 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3013161927042C9D00683F66 /* Global Extentions in Resources */,
+				301315F027041BC700683F66 /* LaunchScreen.storyboard in Resources */,
+				3013161627042A1A00683F66 /* IOS_DaumMap_SDK_1.4.0 in Resources */,
+				301315ED27041BC700683F66 /* Assets.xcassets in Resources */,
+				301315EB27041BC600683F66 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		391DBA7D3B66DA2DC3CFFE31 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-myBabyVaccineNote-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		74215E6F546FE3B75317B133 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-myBabyVaccineNote/Pods-myBabyVaccineNote-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-myBabyVaccineNote/Pods-myBabyVaccineNote-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-myBabyVaccineNote/Pods-myBabyVaccineNote-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		301315DC27041BC600683F66 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				301315E827041BC600683F66 /* ViewController.swift in Sources */,
+				3013161F27043C5E00683F66 /* VaccineCollectionViewCell.swift in Sources */,
+				301315E427041BC600683F66 /* AppDelegate.swift in Sources */,
+				301315E627041BC600683F66 /* SceneDelegate.swift in Sources */,
+				3013161D2704390D00683F66 /* DiseaseCollectionViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		301315E927041BC600683F66 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				301315EA27041BC600683F66 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		301315EE27041BC700683F66 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				301315EF27041BC700683F66 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		301315F227041BC700683F66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		301315F327041BC700683F66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		301315F527041BC700683F66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBC64FFC57014BEACF6B8002 /* Pods-myBabyVaccineNote.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PD739GKFH2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = myBabyVaccineNote/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = PlzLetUsZolup.myBabyVaccineNote;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = myBabyVaccineNote/Header/BridgeHeader.h;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		301315F627041BC700683F66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38AC0467EBAC23B2BD53876C /* Pods-myBabyVaccineNote.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PD739GKFH2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = myBabyVaccineNote/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = PlzLetUsZolup.myBabyVaccineNote;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = myBabyVaccineNote/Header/BridgeHeader.h;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		301315DB27041BC600683F66 /* Build configuration list for PBXProject "myBabyVaccineNote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				301315F227041BC700683F66 /* Debug */,
+				301315F327041BC700683F66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		301315F427041BC700683F66 /* Build configuration list for PBXNativeTarget "myBabyVaccineNote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				301315F527041BC700683F66 /* Debug */,
+				301315F627041BC700683F66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 301315D827041BC600683F66 /* Project object */;
+}

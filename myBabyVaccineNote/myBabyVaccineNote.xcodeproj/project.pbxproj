@@ -25,7 +25,6 @@
 		301316142704269500683F66 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3013160127041F2D00683F66 /* libsqlite3.tbd */; };
 		3013161627042A1A00683F66 /* IOS_DaumMap_SDK_1.4.0 in Resources */ = {isa = PBXBuildFile; fileRef = 3013161527042A1A00683F66 /* IOS_DaumMap_SDK_1.4.0 */; };
 		3013161927042C9D00683F66 /* Global Extentions in Resources */ = {isa = PBXBuildFile; fileRef = 3013161827042C9D00683F66 /* Global Extentions */; };
-		3013161D2704390D00683F66 /* DiseaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3013161C2704390C00683F66 /* DiseaseCollectionViewCell.swift */; };
 		3013161F27043C5E00683F66 /* VaccineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3013161E27043C5E00683F66 /* VaccineCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,7 +61,6 @@
 		3013160F2704258F00683F66 /* DaumMap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DaumMap.framework; sourceTree = "<group>"; };
 		3013161527042A1A00683F66 /* IOS_DaumMap_SDK_1.4.0 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = IOS_DaumMap_SDK_1.4.0; sourceTree = "<group>"; };
 		3013161827042C9D00683F66 /* Global Extentions */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Global Extentions"; path = "myBabyVaccineNote/Global Extentions"; sourceTree = SOURCE_ROOT; };
-		3013161C2704390C00683F66 /* DiseaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		3013161E27043C5E00683F66 /* VaccineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccineCollectionViewCell.swift; sourceTree = "<group>"; };
 		38AC0467EBAC23B2BD53876C /* Pods-myBabyVaccineNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myBabyVaccineNote.release.xcconfig"; path = "Target Support Files/Pods-myBabyVaccineNote/Pods-myBabyVaccineNote.release.xcconfig"; sourceTree = "<group>"; };
 		A11839AF319B7C7B770F4B89 /* Pods_myBabyVaccineNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myBabyVaccineNote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,7 +142,6 @@
 		3013161A270438D700683F66 /* ReusableCell */ = {
 			isa = PBXGroup;
 			children = (
-				3013161C2704390C00683F66 /* DiseaseCollectionViewCell.swift */,
 				3013161E27043C5E00683F66 /* VaccineCollectionViewCell.swift */,
 			);
 			path = ReusableCell;
@@ -305,7 +302,6 @@
 				3013161F27043C5E00683F66 /* VaccineCollectionViewCell.swift in Sources */,
 				301315E427041BC600683F66 /* AppDelegate.swift in Sources */,
 				301315E627041BC600683F66 /* SceneDelegate.swift in Sources */,
-				3013161D2704390D00683F66 /* DiseaseCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

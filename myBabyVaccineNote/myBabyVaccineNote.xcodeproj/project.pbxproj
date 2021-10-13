@@ -159,10 +159,10 @@
 		3013161B270438E400683F66 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				304E49DF2716A68400E71995 /* MyPage */,
-				304E49DE2716A67000E71995 /* Schedule */,
-				304E49DD2716A61800E71995 /* History */,
 				304E49DC2716A60500E71995 /* Home */,
+				304E49DD2716A61800E71995 /* History */,
+				304E49DE2716A67000E71995 /* Schedule */,
+				304E49DF2716A68400E71995 /* MyPage */,
 			);
 			path = Scene;
 			sourceTree = "<group>";

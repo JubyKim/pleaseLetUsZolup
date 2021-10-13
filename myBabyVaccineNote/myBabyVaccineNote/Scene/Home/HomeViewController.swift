@@ -12,7 +12,7 @@ import SwiftUI
 import CoreLocation
 import DLRadioButton
 
-class HomeViewController: UIViewController, MTMapViewDelegate {
+class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
     
     // MARK: - extension
     func makeShadow(yourView: UIView){
@@ -129,6 +129,10 @@ class HomeViewController: UIViewController, MTMapViewDelegate {
         cv.backgroundColor = .none
         return cv
     }()
+    let myLocationButton = UIButton().then{
+        $0.setBackgroundImage(UIImage(named:"currentLocationMarker"), for: .normal)
+        $0.addTarget(self, action: #selector(myLocationButtonTapped), for: .touchUpInside)
+    }
     
     let mapView = MTMapView().then {
         $0.setMapCenter(.init(geoCoord: .init(latitude: 37.537229, longitude: 127.005515)), animated: true)
@@ -229,10 +233,12 @@ class HomeViewController: UIViewController, MTMapViewDelegate {
     }
     
     
+    //MARK:- ??
+    var locationManager : CLLocationManager!
+    
     // MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let rootVC = TabbarViewContorller()
         self.navigationController?.navigationBar.isHidden = true
         
         view.addSubview(headerView)
@@ -241,6 +247,14 @@ class HomeViewController: UIViewController, MTMapViewDelegate {
         mapView.delegate = self
         initCollectionView()
         allLayout()
+        
+        locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
     }
     @objc func btnTouch(_ sender: UIButton){
         vaccineList = vaccineAllList.filter{$0.disId == sender.tag}
@@ -250,6 +264,18 @@ class HomeViewController: UIViewController, MTMapViewDelegate {
         vaccineCollectionview.reloadData()
         vaccineCollectionview.reloadInputViews()
     }
+    
+    @objc func myLocationButtonTapped(){
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        let currentLocation = locationManager.location?.coordinate
+        let lat = currentLocation?.latitude.magnitude ?? 37.5663
+        let lng = currentLocation?.longitude.magnitude ?? 126.9779
+        
+        self.mapView.setMapCenter(MTMapPoint(geoCoord: MTMapPointGeo(latitude: lat, longitude: lng)), animated: false)
+        mapView.showCurrentLocationMarker = true
+        mapView.currentLocationTrackingMode = .onWithoutHeading
+    }
+    
     func allLayout(){
         headerViewLayout()
         mapViewLayout()
@@ -304,6 +330,11 @@ class HomeViewController: UIViewController, MTMapViewDelegate {
         mapView.snp.makeConstraints {
             $0.top.equalTo(headerView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
+        }
+        mapView.addSubview(myLocationButton)
+        myLocationButton.snp.makeConstraints{
+            $0.top.equalTo(headerView.snp.bottom).offset(10)
+            $0.leading.equalTo(mapView).offset(10)
         }
     }
 }

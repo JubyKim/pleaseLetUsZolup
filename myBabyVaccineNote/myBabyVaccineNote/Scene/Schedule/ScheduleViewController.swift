@@ -9,9 +9,15 @@ import UIKit
 
 class ScheduleViewController: UIViewController {
 
+    let testLabel = UILabel().then{
+        $0.text = "여기는 ScheduleViewController입니다."
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.addSubview(testLabel)
+        testLabel.snp.makeConstraints{
+            $0.center.equalToSuperview()
+        }
         // Do any additional setup after loading the view.
     }
     

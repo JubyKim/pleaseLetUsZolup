@@ -130,7 +130,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         return cv
     }()
     let myLocationButton = UIButton().then{
-        $0.setBackgroundImage(UIImage(named:"currentLocationMarker"), for: .normal)
+        $0.setBackgroundImage(UIImage(named:"currentLocationButton"), for: .normal)
         $0.addTarget(self, action: #selector(myLocationButtonTapped), for: .touchUpInside)
     }
     

@@ -1,21 +1,23 @@
 {
   "images" : [
     {
-      "filename" : "tabbarMyPageIcon.png",
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "tabbarMyPageIcon.png"
     },
     {
       "idiom" : "universal",
+      "filename" : "tabbarMyPageIcon@2x.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "tabbarMyPageIcon@3x.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {
-    "author" : "xcode",
-    "version" : 1
+    "version" : 1,
+    "author" : "xcode"
   }
 }

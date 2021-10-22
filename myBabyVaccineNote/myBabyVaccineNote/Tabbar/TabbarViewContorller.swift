@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 
 class TabbarViewContorller : UITabBarController {
+    
+    let selectedTabbarButtonColor = UIColor(red: 144/255, green: 202/255, blue: 249/255, alpha: 1)
+    
   var defaultIndex = 0 {
     didSet {
       self.selectedIndex = defaultIndex
@@ -53,17 +56,20 @@ extension TabbarViewContorller : UITabBarControllerDelegate {
     tabBar.barStyle = UIBarStyle.default
     tabBar.barTintColor = UIColor.white
     
-    let imageNames = ["tabbarHomeIcon", "tabbarHistoryIcon", "tabbarScheduleIcon", "tabbarMyPageIcon"]
-    let imageSelectedNames = ["tabHomeAct", "tabSearchAct", "tabCommunityAct", "tabMyAct"]
-
+    let imageSelectedNames = ["tabbarHomeIcon", "tabbarHistoryIcon", "tabbarScheduleIcon", "tabbarMyPageIcon"]
+    let imageNames = ["unselectedTabbarHomeIcon", "unselectedTabbarHistoryIcon", "unselectedTabbarScheduleIcon", "unselectedTabbarMyPageIcon"]
+    let tabbarNames = ["홈", "접종이력", "접종일정","마이페이지"]
+    
     for (ind, value) in (tabBar.items?.enumerated())! {
       let tabBarItem: UITabBarItem = value as UITabBarItem
-      tabBarItem.title = nil
+      tabBarItem.title = tabbarNames[ind]
       tabBarItem.image = UIImage(named: imageNames[ind])?.withRenderingMode(.alwaysOriginal)
       tabBarItem.selectedImage = UIImage(named: imageSelectedNames[ind])?.withRenderingMode(.alwaysOriginal)
       tabBarItem.accessibilityIdentifier = imageNames[ind]
-      tabBarItem.imageInsets.top = 15
-      tabBarItem.imageInsets.bottom = -15
+        
+      tabBarItem.imageInsets.top = 5
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: selectedTabbarButtonColor], for:.selected)
+//      tabBarItem.imageInsets.bottom = -15
     }
   }
 }

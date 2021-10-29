@@ -25,6 +25,7 @@
 		3013161627042A1A00683F66 /* IOS_DaumMap_SDK_1.4.0 in Resources */ = {isa = PBXBuildFile; fileRef = 3013161527042A1A00683F66 /* IOS_DaumMap_SDK_1.4.0 */; };
 		3013161927042C9D00683F66 /* Global Extentions in Resources */ = {isa = PBXBuildFile; fileRef = 3013161827042C9D00683F66 /* Global Extentions */; };
 		3013161F27043C5E00683F66 /* VaccineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3013161E27043C5E00683F66 /* VaccineCollectionViewCell.swift */; };
+		302BF0C2272ADB1A00B48114 /* goyangIlsanR.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 302BF0C1272ADB1A00B48114 /* goyangIlsanR.TTF */; };
 		304E49E22716A72D00E71995 /* TabbarViewContorller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304E49E12716A72D00E71995 /* TabbarViewContorller.swift */; };
 		304E49E42716A78200E71995 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304E49E32716A78200E71995 /* HomeViewController.swift */; };
 		304E49E62716A83600E71995 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304E49E52716A83600E71995 /* HistoryViewController.swift */; };
@@ -65,6 +66,7 @@
 		3013161527042A1A00683F66 /* IOS_DaumMap_SDK_1.4.0 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = IOS_DaumMap_SDK_1.4.0; sourceTree = "<group>"; };
 		3013161827042C9D00683F66 /* Global Extentions */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Global Extentions"; path = "myBabyVaccineNote/Global Extentions"; sourceTree = SOURCE_ROOT; };
 		3013161E27043C5E00683F66 /* VaccineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccineCollectionViewCell.swift; sourceTree = "<group>"; };
+		302BF0C1272ADB1A00B48114 /* goyangIlsanR.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = goyangIlsanR.TTF; sourceTree = "<group>"; };
 		304E49E12716A72D00E71995 /* TabbarViewContorller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewContorller.swift; sourceTree = "<group>"; };
 		304E49E32716A78200E71995 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		304E49E52716A83600E71995 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		301315E227041BC600683F66 /* myBabyVaccineNote */ = {
 			isa = PBXGroup;
 			children = (
+				302BF0C1272ADB1A00B48114 /* goyangIlsanR.TTF */,
 				3013161B270438E400683F66 /* Scene */,
 				304E49E02716A6D200E71995 /* Tabbar */,
 				3013161A270438D700683F66 /* ReusableCell */,
@@ -296,6 +299,7 @@
 				3013161927042C9D00683F66 /* Global Extentions in Resources */,
 				301315F027041BC700683F66 /* LaunchScreen.storyboard in Resources */,
 				3013161627042A1A00683F66 /* IOS_DaumMap_SDK_1.4.0 in Resources */,
+				302BF0C2272ADB1A00B48114 /* goyangIlsanR.TTF in Resources */,
 				301315ED27041BC700683F66 /* Assets.xcassets in Resources */,
 				301315EB27041BC600683F66 /* Main.storyboard in Resources */,
 			);

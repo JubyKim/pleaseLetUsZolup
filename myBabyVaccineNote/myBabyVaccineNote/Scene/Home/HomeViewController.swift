@@ -138,6 +138,15 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         $0.setMapCenter(.init(geoCoord: .init(latitude: 37.537229, longitude: 127.005515)), animated: true)
         $0.baseMapType = .standard
     }
+    
+    let listUpButton = UIButton().then{
+        $0.setBackgroundImage(UIImage(named: "listUpButtonBackground"), for: .normal)
+        $0.setTitle("목록보기", for: .normal)
+        $0.setTitleColor(.gray, for: .normal)
+        $0.titleLabel?.font = UIFont(name: "goyangIlsanR", size: 16.0)
+        print($0.titleLabel?.font)
+    }
+    
     // MARK:- RadioButton
     let stackViewScrollView = UIScrollView()
     let radioButtonStackVIew = UIStackView().then{
@@ -247,6 +256,11 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         mapView.delegate = self
         initCollectionView()
         allLayout()
+        view.addSubview(listUpButton)
+        listUpButton.snp.makeConstraints{
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-16)
+        }
         
         locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()

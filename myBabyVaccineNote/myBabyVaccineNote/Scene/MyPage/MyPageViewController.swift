@@ -41,6 +41,7 @@ class MyPageViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        navigationController?.navigationBar.isHidden = true
         super.viewDidLoad()
         self.view.addSubview(upperBackground)
         self.view.addSubview(profileBox)
@@ -56,7 +57,7 @@ class MyPageViewController: UIViewController {
     }
     
     func allLayout(){
-        navigationController?.navigationBar.isHidden = true
+        
         upperBackgroundLayout()
         profileBoxLayout()
         profilePhotoLayout()

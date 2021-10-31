@@ -9,6 +9,7 @@ target 'myBabyVaccineNote' do
   pod 'SnapKit', '~> 5.0.0'
   pod 'DLRadioButton', '~> 1.4'
   pod 'KakaoSDKCommon'  # 필수 요소를 담은 공통 모듈
+  pod 'FSCalendar'
   # Pods for myBabyVaccineNote
 
 end

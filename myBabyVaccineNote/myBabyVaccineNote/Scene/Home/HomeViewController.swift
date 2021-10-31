@@ -41,6 +41,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     
     // MARK:- Color
     let selectedButtonColor = UIColor(red: 64/255, green: 169/255, blue: 1, alpha: 1)
+    let mainSkyColor = UIColor(red: 144/255, green: 202/255, blue: 249/255, alpha: 1.0)
 
     // MARK:- List
     var diseasesList: [diseases] = [diseases(disId:0, disName: "대상포진"),

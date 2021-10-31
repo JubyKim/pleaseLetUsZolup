@@ -18,6 +18,7 @@ class HistoryViewController: UIViewController, WKUIDelegate, WKNavigationDelegat
     let webView = WKWebView()
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
         self.view.addSubview(webView)
         webView.snp.makeConstraints{
             $0.center.equalToSuperview()

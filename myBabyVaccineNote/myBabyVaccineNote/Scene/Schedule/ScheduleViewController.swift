@@ -6,30 +6,28 @@
 //
 
 import UIKit
+import FSCalendar
+import Then
 
 class ScheduleViewController: UIViewController {
 
-    let testLabel = UILabel().then{
-        $0.text = "여기는 ScheduleViewController입니다."
+    let calendar = FSCalendar().then{
+        $0.scrollDirection = .vertical
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(testLabel)
-        testLabel.snp.makeConstraints{
-            $0.center.equalToSuperview()
+        navigationController?.navigationBar.isHidden = true
+        view.addSubview(calendar)
+        calendarLayout()
         }
-        // Do any additional setup after loading the view.
-    }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func calendarLayout(){
+        calendar.snp.makeConstraints{
+            $0.center.equalToSuperview()
+            $0.trailing.leading.equalToSuperview()
+            $0.top.equalTo(view.safeAreaInsets.top).offset(20)
+            $0.bottom.equalToSuperview().offset(-340)
+            
+        }
     }
-    */
-
-}
+    }

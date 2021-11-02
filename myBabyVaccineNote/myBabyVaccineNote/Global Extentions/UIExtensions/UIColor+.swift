@@ -10,7 +10,6 @@
 
   extension UIColor {
     
-    
     static func rgb(_ red: CGFloat,_ green: CGFloat,_ blue: CGFloat) -> UIColor {
       return UIColor(red: red / 255, green: green / 255, blue: blue / 255, alpha: 1)
     }
@@ -95,5 +94,12 @@
       }
     @nonobjc class var brownishGrey: UIColor {
         return UIColor(white: 102.0 / 255.0, alpha: 1.0)
+      }
+    @nonobjc class var lightBlue: UIColor {
+        return UIColor(red: 144.0 / 255.0, green: 202.0 / 255.0, blue: 249.0 / 255.0, alpha: 1.0)
+      }
+
+    @nonobjc class var dodgerBlue: UIColor {
+        return UIColor(red: 64.0 / 255.0, green: 169.0 / 255.0, blue: 1.0, alpha: 1.0)
       }
   }

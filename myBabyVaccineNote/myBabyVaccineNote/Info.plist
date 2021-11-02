@@ -4,7 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>goyangIlsanR.TTF</string>
+		<string>고양일산R.ttf</string>
 	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>

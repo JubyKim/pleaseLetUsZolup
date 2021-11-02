@@ -31,10 +31,11 @@ class MyPageViewController: UIViewController {
     }
     let nameLabel = UILabel().then{
         $0.text  = "김슈니"
-        $0.font = UIFont(name: "goyangIlsanR", size: 40.0)
+        $0.font = UIFont(name: "GillSans-SemiBold", size: 40.0)
     }
     let ageLabel = UILabel().then{
         $0.text  = "만 24세"
+        $0.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
     }
     let sexImage = UIImageView().then{
         $0.image = UIImage(named: "femaleImage")
@@ -83,6 +84,7 @@ class MyPageViewController: UIViewController {
             $0.leading.equalToSuperview().offset(30)
             $0.trailing.equalToSuperview().offset(-30)
             $0.centerY.equalTo(upperBackground.snp.bottom)
+            $0.height.equalTo(130)
         }
     }
     

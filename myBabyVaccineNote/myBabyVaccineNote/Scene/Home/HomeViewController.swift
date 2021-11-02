@@ -144,7 +144,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         $0.setBackgroundImage(UIImage(named: "listUpButtonBackground"), for: .normal)
         $0.setTitle("목록보기", for: .normal)
         $0.setTitleColor(.gray, for: .normal)
-        $0.titleLabel?.font = UIFont(name: "goyangIlsanR", size: 16.0)
+        $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
         print($0.titleLabel?.font)
     }
     
@@ -157,61 +157,73 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         let disease1 = DLRadioButton().then{
             $0.setTitle(diseasesList[0].disName, for: .normal)
             $0.tag = diseasesList[0].disId
+            $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
         let disease2 = DLRadioButton().then{
             $0.setTitle(diseasesList[1].disName, for: .normal)
             $0.tag = diseasesList[1].disId
+            $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
         let disease3 = DLRadioButton().then{
             $0.setTitle(diseasesList[2].disName, for: .normal)
             $0.tag = diseasesList[2].disId
+            $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
         let disease4 = DLRadioButton().then{
             $0.setTitle(diseasesList[3].disName, for: .normal)
             $0.tag = diseasesList[3].disId
+            $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
         let disease5 = DLRadioButton().then{
             $0.setTitle(diseasesList[4].disName, for: .normal)
             $0.tag = diseasesList[4].disId
+            $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
         let disease6 = DLRadioButton().then{
             $0.setTitle(diseasesList[5].disName, for: .normal)
             $0.tag = diseasesList[5].disId
+            $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
         let disease7 = DLRadioButton().then{
             $0.setTitle(diseasesList[6].disName, for: .normal)
             $0.tag = diseasesList[6].disId
+            $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
         let disease8 = DLRadioButton().then{
             $0.setTitle(diseasesList[7].disName, for: .normal)
             $0.tag = diseasesList[7].disId
+            $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
         let disease9 = DLRadioButton().then{
             $0.setTitle(diseasesList[8].disName, for: .normal)
             $0.tag = diseasesList[8].disId
+            $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
         let disease10 = DLRadioButton().then{
             $0.setTitle(diseasesList[9].disName, for: .normal)
             $0.tag = diseasesList[9].disId
+            $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
         let disease11 = DLRadioButton().then{
             $0.setTitle(diseasesList[10].disName, for: .normal)
             $0.tag = diseasesList[10].disId
+            $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
         let disease12 = DLRadioButton().then{
             $0.setTitle(diseasesList[11].disName, for: .normal)
             $0.tag = diseasesList[11].disId
+            $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
         disease1.otherButtons.append(disease2)
@@ -247,10 +259,12 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     var locationManager : CLLocationManager!
     
     // MARK:- LifeCycle
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
-        
+        self.tabBarController?.tabBar.backgroundColor = .white
         view.addSubview(headerView)
         view.addSubview(mapView)
         makeButtons()
@@ -372,12 +386,19 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         var vaccineCell: VaccineCollectionViewCell?
         vaccineCell = (collectionView.dequeueReusableCell(withReuseIdentifier: VaccineCollectionViewCell.identifier, for:indexPath) as? VaccineCollectionViewCell)
         vaccineCell!.setupView()
-        vaccineCell?.buttonName.text = vaccineList[indexPath.row].vacName
-        
+        vaccineCell?.backgroundColor = nil
+        vaccineCell?.button.layer.cornerRadius = 15
+        vaccineCell?.button.titleLabel?.text = vaccineList[indexPath.row].vacName
+        vaccineCell?.button.setTitle(vaccineList[indexPath.row].vacName, for: .normal)
+        vaccineCell?.button.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
+//        vaccineCell?.button.titleLabel?.minimumScaleFactor = 0.5
+        vaccineCell?.button.titleLabel?.numberOfLines = 1
+        vaccineCell?.button.titleLabel?.sizeToFit()
         if vaccineList[indexPath.row].selected == true {
             vaccineCell?.backgroundColor = selectedButtonColor
         }else {
             vaccineCell?.backgroundColor = .white
+            vaccineCell?.button.setTitleColor(.blue, for: .normal)
         }
         return vaccineCell!
     }

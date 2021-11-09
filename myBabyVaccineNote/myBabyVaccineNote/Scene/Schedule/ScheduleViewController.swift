@@ -35,6 +35,15 @@ class ScheduleViewController: UIViewController, FSCalendarDelegateAppearance {
     
     let eventTable = UITableView()
     
+    let reservationView = UIView().then{
+        $0.backgroundColor = .yellow
+    }
+    let reservationButton = UIButton().then{
+        $0.titleLabel?.text = "예약하기"
+        $0.addTarget(self, action: #selector(reservationButtonTapped), for: .touchUpInside)
+        $0.backgroundColor = .blue
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
@@ -47,19 +56,27 @@ class ScheduleViewController: UIViewController, FSCalendarDelegateAppearance {
         eventTable.dataSource = self
         view.addSubview(calendar)
         view.addSubview(eventTable)
+        view.addSubview(reservationView)
         calendarLayout()
         setUpEvents()
         eventTableLayout()
-        
+        reservationViewLayout()
+        reservationView.isHidden = true
         eventTable.register(UITableViewCell.self, forCellReuseIdentifier: "EventTableViewCell")
         
+    }
+    @objc func reservationButtonTapped(){
+        reservationView.isHidden = true
+    }
+    func makeEvent(Date: Date, Event:String){
+        eventsList.append(event(date: Date, events: Event))
     }
     
     func setUpEvents() {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        let xmas = formatter.date(from: "2021-12-25")
-        events = [xmas!]
+        makeEvent(Date: formatter.date(from: "2021-12-25")!, Event: "Xmas")
+        events = [eventsList[0].date]
     }
     
     func calendarLayout(){
@@ -68,7 +85,6 @@ class ScheduleViewController: UIViewController, FSCalendarDelegateAppearance {
             $0.trailing.leading.equalToSuperview()
             $0.top.equalTo(view.safeAreaInsets.top).offset(20)
             $0.bottom.equalToSuperview().offset(-340)
-            
         }
     }
     
@@ -79,21 +95,39 @@ class ScheduleViewController: UIViewController, FSCalendarDelegateAppearance {
         }
     }
     
-    //    func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
-    //
-    //            switch dateFormatter.string(from: date) {
-    //            case dateFormatter.string(from: Date()):
-    //                return "오늘"
-    //            case "2020-06-22":
-    //                return "출근"
-    //            case "2020-06-23":
-    //                return "지각"
-    //            case "2020-06-24":
-    //                return "결근"
-    //            default:
-    //                return nil
-    //            }
-    //        }
+    func reservationViewLayout(){
+        reservationView.snp.makeConstraints{
+            $0.leading.equalToSuperview().offset(20)
+            $0.trailing.equalToSuperview().offset(-20)
+            $0.top.equalToSuperview().offset(170)
+            $0.bottom.equalToSuperview().offset(-170)
+            $0.center.equalToSuperview()
+        }
+        reservationView.addSubview(reservationButton)
+        reservationButton.snp.makeConstraints{
+            $0.bottom.equalToSuperview().offset(-20)
+            $0.leading.equalToSuperview().offset(20)
+            $0.trailing.equalToSuperview().offset(-20)
+            
+        }
+        
+    }
+    
+        func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
+    
+                switch dateFormatter.string(from: date) {
+                case dateFormatter.string(from: Date()):
+                    return "오늘"
+                case "2021-11-22":
+                    return "출근"
+                case "2021-11-23":
+                    return "지각"
+                case "2021-11-24":
+                    return "결근"
+                default:
+                    return nil
+                }
+            }
     
 }
 
@@ -108,14 +142,7 @@ extension ScheduleViewController: FSCalendarDelegate, FSCalendarDataSource {
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        guard let modalPresentView = self.storyboard?.instantiateViewController(identifier: "eventViewController") as? eventViewController else { return }
-        
-        // 날짜를 원하는 형식으로 저장하기 위한 방법입니다.
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        modalPresentView.dateLabel.text = dateFormatter.string(from: date)
-        print("여기야")
-        self.present(modalPresentView, animated: true, completion: nil)
+        reservationView.isHidden = false
     }
 
 }
@@ -127,8 +154,6 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource{
         self.eventTable.register(EventTableViewCell.self, forCellReuseIdentifier: EventTableViewCell.identifier)
     
     }
-    
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return eventsList.count
@@ -143,8 +168,5 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource{
         print(dateFormatter.string(from: eventsList[indexPath.row].date))
         return cell ?? UITableViewCell()
     }
-    
-    
-    
 }
 

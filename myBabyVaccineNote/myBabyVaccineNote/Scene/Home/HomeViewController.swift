@@ -28,7 +28,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     }
     // MARK:- variables
     var selectedDisId = 0
-    
+    var tempIndex = 0
     // MARK:- struct
     struct diseases {
         var disId : Int
@@ -484,16 +484,18 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         vaccineList[indexPath.item].selected.toggle()
 
         var temp : [vaccineAndHospital] = []
+        temp.removeAll()
+        mapMarkers.removeAll()
         temp = hospitalList.filter{$0.vaccineName == vaccineList[indexPath.item].vacName}
         for i in 0...temp.count-1 {
             mapMarkers.append(poiItem(id: temp[i].id, hospName: temp[i].hospitalName, latitude: temp[i].latitude, longitude: temp[i].longitude))
         }
-        
         mapView.removeAllPOIItems()
         mapView.addPOIItems(mapMarkers)
         
         collectionView.reloadData()
         collectionView.reloadInputViews()
+        tempIndex = indexPath.item
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

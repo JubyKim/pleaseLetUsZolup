@@ -29,11 +29,13 @@
 		301382372731460500DC6C9B /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301382362731460500DC6C9B /* EventTableViewCell.swift */; };
 		302BF0C2272ADB1A00B48114 /* 고양일산R.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 302BF0C1272ADB1A00B48114 /* 고양일산R.TTF */; };
 		302BF0C4272FC26300B48114 /* 고양일산R.otf in Resources */ = {isa = PBXBuildFile; fileRef = 302BF0C3272FC26300B48114 /* 고양일산R.otf */; };
+		30391517273A954C0079961B /* mybabyvaccinenoteDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30391516273A954C0079961B /* mybabyvaccinenoteDB.swift */; };
 		304E49E22716A72D00E71995 /* TabbarViewContorller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304E49E12716A72D00E71995 /* TabbarViewContorller.swift */; };
 		304E49E42716A78200E71995 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304E49E32716A78200E71995 /* HomeViewController.swift */; };
 		304E49E62716A83600E71995 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304E49E52716A83600E71995 /* HistoryViewController.swift */; };
 		304E49E82716A84100E71995 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304E49E72716A84100E71995 /* ScheduleViewController.swift */; };
 		304E49EA2716A84A00E71995 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304E49E92716A84A00E71995 /* MyPageViewController.swift */; };
+		307B52BD273AA6C70071583E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 307B52BC273AA6C70071583E /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -73,11 +75,15 @@
 		301382362731460500DC6C9B /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		302BF0C1272ADB1A00B48114 /* 고양일산R.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "고양일산R.TTF"; sourceTree = "<group>"; };
 		302BF0C3272FC26300B48114 /* 고양일산R.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "고양일산R.otf"; sourceTree = "<group>"; };
+		30391516273A954C0079961B /* mybabyvaccinenoteDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mybabyvaccinenoteDB.swift; sourceTree = "<group>"; };
 		304E49E12716A72D00E71995 /* TabbarViewContorller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewContorller.swift; sourceTree = "<group>"; };
 		304E49E32716A78200E71995 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		304E49E52716A83600E71995 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		304E49E72716A84100E71995 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		304E49E92716A84A00E71995 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		307B52BC273AA6C70071583E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		30FF07CE2739329000318D53 /* fluent */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fluent; path = ../../../Downloads/fluent; sourceTree = "<group>"; };
+		30FF07D1273932AD00318D53 /* fluent */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fluent; path = ../../../Downloads/fluent; sourceTree = "<group>"; };
 		38AC0467EBAC23B2BD53876C /* Pods-myBabyVaccineNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myBabyVaccineNote.release.xcconfig"; path = "Target Support Files/Pods-myBabyVaccineNote/Pods-myBabyVaccineNote.release.xcconfig"; sourceTree = "<group>"; };
 		A11839AF319B7C7B770F4B89 /* Pods_myBabyVaccineNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myBabyVaccineNote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBC64FFC57014BEACF6B8002 /* Pods-myBabyVaccineNote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myBabyVaccineNote.debug.xcconfig"; path = "Target Support Files/Pods-myBabyVaccineNote/Pods-myBabyVaccineNote.debug.xcconfig"; sourceTree = "<group>"; };
@@ -107,6 +113,8 @@
 		301315D727041BC600683F66 = {
 			isa = PBXGroup;
 			children = (
+				30FF07D0273932AD00318D53 /* Packages */,
+				30FF07CE2739329000318D53 /* fluent */,
 				301315E227041BC600683F66 /* myBabyVaccineNote */,
 				301315E127041BC600683F66 /* Products */,
 				A07779DB34F7DCD93F073BF4 /* Pods */,
@@ -138,6 +146,7 @@
 				301315EC27041BC700683F66 /* Assets.xcassets */,
 				301315EE27041BC700683F66 /* LaunchScreen.storyboard */,
 				301315F127041BC700683F66 /* Info.plist */,
+				307B52BC273AA6C70071583E /* GoogleService-Info.plist */,
 			);
 			path = myBabyVaccineNote;
 			sourceTree = "<group>";
@@ -182,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				304E49E32716A78200E71995 /* HomeViewController.swift */,
+				30391516273A954C0079961B /* mybabyvaccinenoteDB.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -217,6 +227,14 @@
 				304E49E12716A72D00E71995 /* TabbarViewContorller.swift */,
 			);
 			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		30FF07D0273932AD00318D53 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				30FF07D1273932AD00318D53 /* fluent */,
+			);
+			name = Packages;
 			sourceTree = "<group>";
 		};
 		742F13DBB6A78A3A8DF3F010 /* Frameworks */ = {
@@ -306,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				302BF0C4272FC26300B48114 /* 고양일산R.otf in Resources */,
+				307B52BD273AA6C70071583E /* GoogleService-Info.plist in Resources */,
 				3013161927042C9D00683F66 /* Global Extentions in Resources */,
 				301315F027041BC700683F66 /* LaunchScreen.storyboard in Resources */,
 				3013161627042A1A00683F66 /* IOS_DaumMap_SDK_1.4.0 in Resources */,
@@ -364,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30391517273A954C0079961B /* mybabyvaccinenoteDB.swift in Sources */,
 				304E49E22716A72D00E71995 /* TabbarViewContorller.swift in Sources */,
 				3013161F27043C5E00683F66 /* VaccineCollectionViewCell.swift in Sources */,
 				301315E427041BC600683F66 /* AppDelegate.swift in Sources */,

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>526332326535-i8q6n2mtuuraibthvd5nflagnitlpv5u.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.526332326535-i8q6n2mtuuraibthvd5nflagnitlpv5u</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCdKVrrXHIsaFgjGS2AeL0YgxDH7sVfgJc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>526332326535</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>PlzLetUsZolup.myBabyVaccineNote</string>
+	<key>PROJECT_ID</key>
+	<string>mybabyvaccinenote</string>
+	<key>STORAGE_BUCKET</key>
+	<string>mybabyvaccinenote.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:526332326535:ios:f556c83db4b5fdd7d9fe22</string>
+</dict>
+</plist>

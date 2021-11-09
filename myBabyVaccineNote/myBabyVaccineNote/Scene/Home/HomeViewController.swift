@@ -11,8 +11,13 @@ import SnapKit
 import SwiftUI
 import CoreLocation
 import DLRadioButton
+import Firebase
+import FirebaseFirestore
+import CodableFirebase
 
 class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
+    
+    private let ref: DatabaseReference! = Database.database().reference()
     
     // MARK: - extension
     func makeShadow(yourView: UIView){
@@ -30,6 +35,28 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         var disName : String
     }
     
+    struct vaccineAndHospital : Codable {
+        let id: Int
+        let hospitalName, diseaseName, vaccineName: String
+        let price: Int
+        let location: String
+        let latitude, longitude: Double
+        let sideeffect: String
+        
+        enum CodingKeys: String, CodingKey {
+                case id = "ID"
+                case hospitalName = "HOSPITAL_NAME"
+                case diseaseName = "DISEASE_NAME"
+                case vaccineName = "VACCINE_NAME"
+                case price = "PRICE"
+                case location = "LOCATION"
+                case latitude = "LATITUDE"
+                case longitude = "LONGITUDE"
+                case sideeffect = "SIDEEFFECT"
+            }
+        
+    }
+    
     struct vaccine {
         var vacId : Int
         var disId : Int
@@ -39,11 +66,15 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         var selected : Bool
     }
     
+    
     // MARK:- Color
     let selectedButtonColor = UIColor(red: 64/255, green: 169/255, blue: 1, alpha: 1)
     let mainSkyColor = UIColor(red: 144/255, green: 202/255, blue: 249/255, alpha: 1.0)
-
+    
     // MARK:- List
+    
+    var mapMarkers : [MTMapPOIItem] = []
+    var justArray = [1]
     var diseasesList: [diseases] = [diseases(disId:0, disName: "대상포진"),
                                     diseases(disId:1, disName: "로타바이러스"),
                                     diseases(disId:2, disName: "A형간염"),
@@ -104,6 +135,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     
     var vaccineList : [vaccine] = [vaccine(vacId:1 , disId: 0, vacName: "조스타박스주", make : "sk", scope: "몰라", selected: false),
                                    vaccine(vacId:2 , disId: 0, vacName: "스카이조스터주", make : "sk", scope: "몰라", selected: false)]
+    var hospitalList = [vaccineAndHospital]()
     
     // MARK:- property
     let headerView = UIView().then{
@@ -257,12 +289,13 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     
     //MARK:- ??
     var locationManager : CLLocationManager!
+    //MARK:- ??
+    let db = Database.database().reference()
     
     // MARK:- LifeCycle
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.backgroundColor = .white
         view.addSubview(headerView)
@@ -284,6 +317,8 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
+        readData()
+        
     }
     @objc func btnTouch(_ sender: UIButton){
         vaccineList = vaccineAllList.filter{$0.disId == sender.tag}
@@ -304,6 +339,48 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         mapView.showCurrentLocationMarker = true
         mapView.currentLocationTrackingMode = .onWithoutHeading
     }
+    
+    func poiItem(id: Int, hospName: String, latitude: Double, longitude: Double) -> MTMapPOIItem {
+        let item = MTMapPOIItem()
+        item.tag = id
+        item.markerType = .customImage
+        item.customImage = UIImage(named: "mapMarker")
+        item.markerSelectedType = .customImage
+        //        item.customSelectedImage = UIImage(named: "iconMapAct")
+        item.mapPoint = MTMapPoint(geoCoord: .init(latitude: latitude, longitude: longitude))
+        item.showAnimationType = .noAnimation
+        return item
+    }
+    
+    // MARK:- DB
+    
+    func readData(){
+            self.ref.getData { [self](error, snapshot) in
+                    if let error = error {
+                        print("Error getting data \(error)")
+                    }
+                    else if snapshot.exists() {
+//                        print("Got data \(snapshot.value!)")
+//                        print("ttt \(type(of: snapshot.value!))")
+                        
+                        guard let value = snapshot.value else {return}
+                        do {
+                            let vaccineAndHospital = try FirebaseDecoder().decode([vaccineAndHospital].self, from: value)
+                            self.hospitalList = vaccineAndHospital
+                            print("this is hospitalList")
+                            print(self.hospitalList[10])
+//                            print("dddd")
+//                            print(hospitalList.filter{$0.vaccineName == "멘비오"}.map{$0.latitude})
+                        } catch let err {
+                            print (err)
+                        }
+                    }
+                    else {
+                        print("No data available")
+                    }
+        }
+    }
+    
     
     func allLayout(){
         headerViewLayout()
@@ -391,7 +468,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         vaccineCell?.button.titleLabel?.text = vaccineList[indexPath.row].vacName
         vaccineCell?.button.setTitle(vaccineList[indexPath.row].vacName, for: .normal)
         vaccineCell?.button.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
-//        vaccineCell?.button.titleLabel?.minimumScaleFactor = 0.5
+        //        vaccineCell?.button.titleLabel?.minimumScaleFactor = 0.5
         vaccineCell?.button.titleLabel?.numberOfLines = 1
         vaccineCell?.button.titleLabel?.sizeToFit()
         if vaccineList[indexPath.row].selected == true {
@@ -405,7 +482,16 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         vaccineList[indexPath.item].selected.toggle()
-        print(vaccineList)
+
+        var temp : [vaccineAndHospital] = []
+        temp = hospitalList.filter{$0.vaccineName == vaccineList[indexPath.item].vacName}
+        for i in 0...temp.count-1 {
+            mapMarkers.append(poiItem(id: temp[i].id, hospName: temp[i].hospitalName, latitude: temp[i].latitude, longitude: temp[i].longitude))
+        }
+        
+        mapView.removeAllPOIItems()
+        mapView.addPOIItems(mapMarkers)
+        
         collectionView.reloadData()
         collectionView.reloadInputViews()
     }

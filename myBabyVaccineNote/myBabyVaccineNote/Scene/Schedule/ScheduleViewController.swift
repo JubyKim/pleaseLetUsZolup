@@ -41,7 +41,6 @@ class ScheduleViewController: UIViewController, FSCalendarDelegateAppearance {
         
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
-        
         calendar.delegate = self
         calendar.dataSource = self
         eventTable.delegate = self

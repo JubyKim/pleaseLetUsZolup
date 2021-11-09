@@ -10,6 +10,11 @@ target 'myBabyVaccineNote' do
   pod 'DLRadioButton', '~> 1.4'
   pod 'KakaoSDKCommon'  # 필수 요소를 담은 공통 모듈
   pod 'FSCalendar'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'Firebase/Firestore'
+  pod 'CodableFirebase'
+
   # Pods for myBabyVaccineNote
 
 end

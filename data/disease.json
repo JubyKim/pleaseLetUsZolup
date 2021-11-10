@@ -1,0 +1,12 @@
+[ {"disId" : 0, "disName" : "대상포진"}, 
+{"disId" : 1, "disName" : "로타바이러스"},
+{"disId" : 2, "disName" : "A형간염"},
+{"disId" : 3, "disName" : "수막구균"},
+{"disId" : 4, "disName" : "사람유두종바이러스"},
+{"disId" : 5, "disName" : "인플루엔자"},
+{"disId" : 6, "disName" : "장티푸스"},
+{"disId" : 7, "disName" : "Td(파상풍, 디프테리아)"},
+{"disId" : 8, "disName" : "폐렴구균"},
+{"disId" : 9, "disName" : "수두"},
+{"disId" : 10, "disName" : "Tdap(파상풍, 디프테리아, 백일해)"},
+{"disId" : 11, "disName" : "신증후군출혈열"} ]

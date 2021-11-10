@@ -30,7 +30,8 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     var selectedDisId = 0
     var tempIndex = 0
     // MARK:- struct
-    struct diseases {
+    struct diseases : Codable
+    {
         var disId : Int
         var disName : String
     }
@@ -44,20 +45,20 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         let sideeffect: String
         
         enum CodingKeys: String, CodingKey {
-                case id = "ID"
-                case hospitalName = "HOSPITAL_NAME"
-                case diseaseName = "DISEASE_NAME"
-                case vaccineName = "VACCINE_NAME"
-                case price = "PRICE"
-                case location = "LOCATION"
-                case latitude = "LATITUDE"
-                case longitude = "LONGITUDE"
-                case sideeffect = "SIDEEFFECT"
-            }
+            case id = "ID"
+            case hospitalName = "HOSPITAL_NAME"
+            case diseaseName = "DISEASE_NAME"
+            case vaccineName = "VACCINE_NAME"
+            case price = "PRICE"
+            case location = "LOCATION"
+            case latitude = "LATITUDE"
+            case longitude = "LONGITUDE"
+            case sideeffect = "SIDEEFFECT"
+        }
         
     }
     
-    struct vaccine {
+    struct vaccine : Codable{
         var vacId : Int
         var disId : Int
         var vacName : String
@@ -75,19 +76,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     
     var mapMarkers : [MTMapPOIItem] = []
     var justArray = [1]
-    var diseasesList: [diseases] = [diseases(disId:0, disName: "대상포진"),
-                                    diseases(disId:1, disName: "로타바이러스"),
-                                    diseases(disId:2, disName: "A형간염"),
-                                    diseases(disId:3, disName: "수막구균"),
-                                    diseases(disId:4, disName: "사람유두종바이러스"),
-                                    diseases(disId:5, disName: "인플루엔자"),
-                                    diseases(disId:6, disName: "장티푸스"),
-                                    diseases(disId:7, disName: "Td(파상풍, 디프테리아)"),
-                                    diseases(disId:8, disName: "폐렴구균"),
-                                    diseases(disId:9, disName: "수두"),
-                                    diseases(disId:10, disName: "Tdap(파상풍, 디프테리아, 백일해)"),
-                                    diseases(disId:11, disName: "신증후군출혈열"),
-    ]
+    var diseasesList: [diseases] = [diseases(disId:0, disName: "대상포진")]
     
     var vaccineAllList : [vaccine] = [vaccine(vacId:1 , disId: 0, vacName: "조스타박스주", make : "sk", scope: "몰라", selected: false),
                                       vaccine(vacId:2 , disId: 0, vacName: "스카이조스터주", make : "sk", scope: "몰라", selected: false),
@@ -295,12 +284,11 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     // MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        readData()
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.backgroundColor = .white
         view.addSubview(headerView)
         view.addSubview(mapView)
-        makeButtons()
         mapView.delegate = self
         initCollectionView()
         allLayout()
@@ -316,8 +304,6 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        
-        readData()
         
     }
     @objc func btnTouch(_ sender: UIButton){
@@ -355,30 +341,55 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     // MARK:- DB
     
     func readData(){
-            self.ref.getData { [self](error, snapshot) in
-                    if let error = error {
-                        print("Error getting data \(error)")
-                    }
-                    else if snapshot.exists() {
-//                        print("Got data \(snapshot.value!)")
-//                        print("ttt \(type(of: snapshot.value!))")
-                        
-                        guard let value = snapshot.value else {return}
-                        do {
-                            let vaccineAndHospital = try FirebaseDecoder().decode([vaccineAndHospital].self, from: value)
-                            self.hospitalList = vaccineAndHospital
-                            print("this is hospitalList")
-                            print(self.hospitalList[10])
-//                            print("dddd")
-//                            print(hospitalList.filter{$0.vaccineName == "멘비오"}.map{$0.latitude})
-                        } catch let err {
-                            print (err)
-                        }
-                    }
-                    else {
-                        print("No data available")
-                    }
+        self.ref.child("vacHosp").getData { [self](error, snapshot) in
+            if let error = error {
+                print("Error getting data \(error)")
+            }
+            else if snapshot.exists() {
+                //                        print("Got data \(snapshot.value!)")
+                //                        print("ttt \(type(of: snapshot.value!))")
+                
+                guard let value = snapshot.value else {return}
+                do {
+                    let vaccineAndHospital = try FirebaseDecoder().decode([vaccineAndHospital].self, from: value)
+                    self.hospitalList = vaccineAndHospital
+                    print("this is hospitalList")
+                    print(self.hospitalList[10])
+                    //                            print("dddd")
+                    //                            print(hospitalList.filter{$0.vaccineName == "멘비오"}.map{$0.latitude})
+                } catch let err {
+                    print (err)
+                }
+            }
+            else {
+                print("No data available")
+            }
         }
+        
+        self.ref.child("diseaseTable").getData { [self](error, snapshot) in
+            if let error = error {
+                print("Error getting data \(error)")
+            }
+            else if snapshot.exists() {
+                //                        print("Got data \(snapshot.value!)")
+                //                        print("ttt \(type(of: snapshot.value!))")
+                
+                guard let value = snapshot.value else {return}
+                do {
+                    let disease = try FirebaseDecoder().decode([diseases].self, from: value)
+                    self.diseasesList = disease
+                    print("this is diseasesList")
+                    print(self.diseasesList[10])
+                    makeButtons()
+                } catch let err {
+                    print (err)
+                }
+            }
+            else {
+                print("No data available")
+            }
+        }
+        
     }
     
     
@@ -499,7 +510,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
         mapView.removeAllPOIItems()
         mapView.addPOIItems(mapMarkers)
-
+        
         tempIndex = indexPath.item
         
         collectionView.reloadData()

@@ -471,18 +471,25 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         //        vaccineCell?.button.titleLabel?.minimumScaleFactor = 0.5
         vaccineCell?.button.titleLabel?.numberOfLines = 1
         vaccineCell?.button.titleLabel?.sizeToFit()
+        
         if vaccineList[indexPath.row].selected == true {
             vaccineCell?.backgroundColor = selectedButtonColor
+            vaccineList[indexPath.row].selected = false
         }else {
             vaccineCell?.backgroundColor = .white
             vaccineCell?.button.setTitleColor(.blue, for: .normal)
         }
+        
+        if vaccineList[indexPath.row].selected == true {
+            vaccineList[indexPath.row].selected = false
+        }
+        
         return vaccineCell!
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         vaccineList[indexPath.item].selected.toggle()
-
+        
         var temp : [vaccineAndHospital] = []
         temp.removeAll()
         mapMarkers.removeAll()
@@ -492,10 +499,11 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
         mapView.removeAllPOIItems()
         mapView.addPOIItems(mapMarkers)
+
+        tempIndex = indexPath.item
         
         collectionView.reloadData()
         collectionView.reloadInputViews()
-        tempIndex = indexPath.item
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

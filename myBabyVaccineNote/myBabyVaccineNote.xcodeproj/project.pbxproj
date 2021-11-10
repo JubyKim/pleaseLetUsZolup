@@ -29,7 +29,6 @@
 		301382372731460500DC6C9B /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301382362731460500DC6C9B /* EventTableViewCell.swift */; };
 		302BF0C2272ADB1A00B48114 /* 고양일산R.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 302BF0C1272ADB1A00B48114 /* 고양일산R.TTF */; };
 		302BF0C4272FC26300B48114 /* 고양일산R.otf in Resources */ = {isa = PBXBuildFile; fileRef = 302BF0C3272FC26300B48114 /* 고양일산R.otf */; };
-		30391517273A954C0079961B /* mybabyvaccinenoteDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30391516273A954C0079961B /* mybabyvaccinenoteDB.swift */; };
 		304E49E22716A72D00E71995 /* TabbarViewContorller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304E49E12716A72D00E71995 /* TabbarViewContorller.swift */; };
 		304E49E42716A78200E71995 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304E49E32716A78200E71995 /* HomeViewController.swift */; };
 		304E49E62716A83600E71995 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304E49E52716A83600E71995 /* HistoryViewController.swift */; };
@@ -75,7 +74,6 @@
 		301382362731460500DC6C9B /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		302BF0C1272ADB1A00B48114 /* 고양일산R.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "고양일산R.TTF"; sourceTree = "<group>"; };
 		302BF0C3272FC26300B48114 /* 고양일산R.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "고양일산R.otf"; sourceTree = "<group>"; };
-		30391516273A954C0079961B /* mybabyvaccinenoteDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mybabyvaccinenoteDB.swift; sourceTree = "<group>"; };
 		304E49E12716A72D00E71995 /* TabbarViewContorller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewContorller.swift; sourceTree = "<group>"; };
 		304E49E32716A78200E71995 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		304E49E52716A83600E71995 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -191,7 +189,6 @@
 			isa = PBXGroup;
 			children = (
 				304E49E32716A78200E71995 /* HomeViewController.swift */,
-				30391516273A954C0079961B /* mybabyvaccinenoteDB.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -383,7 +380,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30391517273A954C0079961B /* mybabyvaccinenoteDB.swift in Sources */,
 				304E49E22716A72D00E71995 /* TabbarViewContorller.swift in Sources */,
 				3013161F27043C5E00683F66 /* VaccineCollectionViewCell.swift in Sources */,
 				301315E427041BC600683F66 /* AppDelegate.swift in Sources */,

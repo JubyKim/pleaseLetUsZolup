@@ -497,7 +497,8 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         print(vaccineList)
         print("tempCount몇?")
         print(temp.count)
-        for i in 0...temp.count-1 {
+        for i in 0...temp.count-1 { //
+        
             mapMarkers.append(poiItem(id: temp[i].id, hospName: temp[i].hospitalName, latitude: temp[i].latitude, longitude: temp[i].longitude))
         }
         mapView.removeAllPOIItems()

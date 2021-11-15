@@ -15,6 +15,20 @@ import Firebase
 import FirebaseFirestore
 import CodableFirebase
 
+class CustomDLRadioButton: DLRadioButton {
+    override var intrinsicContentSize: CGSize {
+        if let label = self.titleLabel {
+            label.sizeToFit()
+            var sz = label.bounds.size;
+            sz.height += self.titleEdgeInsets.top + self.titleEdgeInsets.bottom
+            sz.width += self.icon.size.width + self.titleEdgeInsets.left + self.titleEdgeInsets.right + self.marginWidth
+            return sz
+        }
+        return CGSize.zero
+    }
+}
+
+
 class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManagerDelegate {
     
     private let ref: DatabaseReference! = Database.database().reference()
@@ -132,76 +146,89 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         $0.spacing = 5
     }
     func makeButtons(){
-        let disease1 = DLRadioButton().then{
+        let disease1 = CustomDLRadioButton().then{
             $0.setTitle(diseasesList[0].disName, for: .normal)
             $0.tag = diseasesList[0].disId
+            $0.titleLabel?.numberOfLines = 1
             $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
-        let disease2 = DLRadioButton().then{
+        let disease2 = CustomDLRadioButton().then{
             $0.setTitle(diseasesList[1].disName, for: .normal)
             $0.tag = diseasesList[1].disId
             $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
+            $0.titleLabel?.numberOfLines = 1
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
-        let disease3 = DLRadioButton().then{
+        let disease3 = CustomDLRadioButton().then{
             $0.setTitle(diseasesList[2].disName, for: .normal)
             $0.tag = diseasesList[2].disId
+            $0.titleLabel?.numberOfLines = 1
             $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
-        let disease4 = DLRadioButton().then{
+        let disease4 = CustomDLRadioButton().then{
             $0.setTitle(diseasesList[3].disName, for: .normal)
             $0.tag = diseasesList[3].disId
             $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
+            $0.titleLabel?.numberOfLines = 1
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
-        let disease5 = DLRadioButton().then{
+        let disease5 = CustomDLRadioButton().then{
             $0.setTitle(diseasesList[4].disName, for: .normal)
             $0.tag = diseasesList[4].disId
             $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
+            $0.titleLabel?.numberOfLines = 1
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
-        let disease6 = DLRadioButton().then{
+        let disease6 = CustomDLRadioButton().then{
             $0.setTitle(diseasesList[5].disName, for: .normal)
             $0.tag = diseasesList[5].disId
+            $0.titleLabel?.numberOfLines = 1
             $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
+            $0.titleLabel?.sizeToFit()
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
-        let disease7 = DLRadioButton().then{
+        let disease7 = CustomDLRadioButton().then{
             $0.setTitle(diseasesList[6].disName, for: .normal)
             $0.tag = diseasesList[6].disId
+            $0.titleLabel?.numberOfLines = 1
             $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
-        let disease8 = DLRadioButton().then{
+        let disease8 = CustomDLRadioButton().then{
             $0.setTitle(diseasesList[7].disName, for: .normal)
             $0.tag = diseasesList[7].disId
             $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
+            $0.titleLabel?.numberOfLines = 1
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
-        let disease9 = DLRadioButton().then{
+        let disease9 = CustomDLRadioButton().then{
             $0.setTitle(diseasesList[8].disName, for: .normal)
             $0.tag = diseasesList[8].disId
             $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
+            $0.titleLabel?.numberOfLines = 1
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
-        let disease10 = DLRadioButton().then{
+        let disease10 = CustomDLRadioButton().then{
             $0.setTitle(diseasesList[9].disName, for: .normal)
             $0.tag = diseasesList[9].disId
             $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
+            $0.titleLabel?.numberOfLines = 1
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
-        let disease11 = DLRadioButton().then{
+        let disease11 = CustomDLRadioButton().then{
             $0.setTitle(diseasesList[10].disName, for: .normal)
             $0.tag = diseasesList[10].disId
             $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
+            $0.titleLabel?.numberOfLines = 1
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
-        let disease12 = DLRadioButton().then{
+        let disease12 = CustomDLRadioButton().then{
             $0.setTitle(diseasesList[11].disName, for: .normal)
             $0.tag = diseasesList[11].disId
             $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
+            $0.titleLabel?.numberOfLines = 1
             $0.addTarget(self, action: #selector(self.btnTouch(_:)), for: .touchUpInside)
         }
         disease1.otherButtons.append(disease2)
@@ -313,8 +340,6 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
                     self.hospitalList = vaccineAndHospital
                     print("this is hospitalList")
                     print(self.hospitalList[10])
-                    //                            print("dddd")
-                    //                            print(hospitalList.filter{$0.vaccineName == "멘비오"}.map{$0.latitude})
                 } catch let err {
                     print (err)
                 }
@@ -329,8 +354,6 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
                 print("Error getting data \(error)")
             }
             else if snapshot.exists() {
-                //                        print("Got data \(snapshot.value!)")
-                //                        print("ttt \(type(of: snapshot.value!))")
                 
                 guard let value = snapshot.value else {return}
                 do {
@@ -353,8 +376,6 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
                 print("Error getting data \(error)")
             }
             else if snapshot.exists() {
-                //                        print("Got data \(snapshot.value!)")
-                //                        print("ttt \(type(of: snapshot.value!))")
                 
                 guard let value = snapshot.value else {return}
                 do {
@@ -458,6 +479,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var vaccineCell: VaccineCollectionViewCell?
         vaccineCell = (collectionView.dequeueReusableCell(withReuseIdentifier: VaccineCollectionViewCell.identifier, for:indexPath) as? VaccineCollectionViewCell)
+        
         vaccineCell!.setupView()
         vaccineCell?.backgroundColor = nil
         vaccineCell?.button.layer.cornerRadius = 15
@@ -482,6 +504,9 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         
         return vaccineCell!
     }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return [(NSString*)[arrayOfStats objectAtIndex:indexPath.row] sizeWithAttributes:NULL]
+       }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         vaccineList[indexPath.item].selected.toggle()
@@ -490,14 +515,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         temp.removeAll()
         mapMarkers.removeAll()
         temp = hospitalList.filter{$0.vaccineName == vaccineList[indexPath.item].vacName}
-        print(vaccineList[indexPath.item].vacName)
-        print("allallallallallallall")
-        print(vaccineAllList)
-        print("hehehehehehehehehehhhhhhhhhh")
-        print(vaccineList)
-        print("tempCount몇?")
-        print(temp.count)
-        for i in 0...temp.count-1 {
+        for i in 0...temp.count-1 { //
             mapMarkers.append(poiItem(id: temp[i].id, hospName: temp[i].hospitalName, latitude: temp[i].latitude, longitude: temp[i].longitude))
         }
         mapView.removeAllPOIItems()
@@ -512,6 +530,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
+
 }
 
 protocol Identiifiable {

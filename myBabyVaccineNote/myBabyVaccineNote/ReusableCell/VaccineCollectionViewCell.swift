@@ -29,10 +29,10 @@ class VaccineCollectionViewCell: UICollectionViewCell {
             $0.center.bottom.top.trailing.leading.equalToSuperview()
 
         }
-        button.titleLabel?.sizeToFit()
+        
         buttonName.snp.makeConstraints{
             $0.leading.trailing.top.bottom.equalToSuperview()
         }
-        
+        button.titleLabel?.sizeToFit()
     }
 }

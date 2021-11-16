@@ -40,6 +40,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         yourView.layer.shadowOffset = .zero
         yourView.layer.shadowRadius = 10
     }
+    
     // MARK:- variables
     var selectedDisId = 0
     var tempIndex = 0
@@ -72,13 +73,13 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         
     }
     
-    struct vaccine : Codable{
-        var vacId : Int
-        var disId : Int
-        var vacName : String
-        var make : String
-        var scope : String
-        var selected : Bool
+    struct vaccine: Codable {
+        let vacId, disId: Int
+        let vacName: String
+        let make: String
+        let scope: String
+        var selected: Bool
+        let sideEffect: String
     }
     
     
@@ -91,10 +92,12 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     var mapMarkers : [MTMapPOIItem] = []
     var justArray = [1]
     var diseasesList: [diseases] = [diseases(disId:0, disName: "대상포진")]
-    var vaccineOUTList : [vaccine] = [vaccine(vacId:1 , disId: 0, vacName: "조스타박스주", make : "sk", scope: "몰라", selected: false)]
-    var vaccineAllList : [vaccine] = [vaccine(vacId:1 , disId: 0, vacName: "조스타박스주", make : "sk", scope: "몰라", selected: false)]
-    var vaccineList : [vaccine] = [vaccine(vacId:1 , disId: 0, vacName: "조스타박스주", make : "sk", scope: "몰라", selected: false),
-                                   vaccine(vacId:2 , disId: 0, vacName: "스카이조스터주", make : "sk", scope: "몰라", selected: false)]
+    var vaccineOUTList : [vaccine] = [vaccine(vacId:1 , disId: 0, vacName: "조스타박스주", make : "sk", scope: "몰라", selected: false, sideEffect: "q")]
+    
+    var vaccineAllList : [vaccine] = [vaccine(vacId:1 , disId: 0, vacName: "조스타박스주", make : "sk", scope: "몰라", selected: false, sideEffect: "q")]
+    
+    var vaccineList : [vaccine] = [vaccine(vacId:1 , disId: 0, vacName: "조스타박스주", make : "sk", scope: "몰라", selected: false, sideEffect: "q"),
+                                   vaccine(vacId:2 , disId: 0, vacName: "스카이조스터주", make : "sk", scope: "몰라", selected: false, sideEffect: "q")]
     var hospitalList = [vaccineAndHospital]()
     
     // MARK:- property
@@ -144,6 +147,71 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     let stackViewScrollView = UIScrollView()
     let radioButtonStackVIew = UIStackView().then{
         $0.spacing = 5
+    }
+    
+    let vaccineDetailView = UIView().then{
+        $0.backgroundColor = UIColor(white: 1.0, alpha: 0.7)
+    }
+    
+    let vaccineDetailHospName = UILabel().then{
+        $0.font = UIFont(name: "GillSans-SemiBold", size: 20.0)
+    }
+    let vaccineDetailHospAdr = UILabel().then{
+        $0.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
+    }
+    let vaccineDetailDisName = UILabel().then{
+        $0.font = UIFont(name: "GillSans-SemiBold", size: 14.0)
+    }
+    
+    let vaccineDetailvacName = UILabel().then{
+        $0.font = UIFont(name: "GillSans-SemiBold", size: 14.0)
+    }
+    let vaccineDetailPrice = UILabel().then{
+        $0.font = UIFont(name: "GillSans-SemiBold", size: 14.0)
+    }
+    let detailCloseButton = UIButton().then{
+        $0.setBackgroundImage(UIImage(named: "close"), for: .normal)
+        $0.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+    }
+    
+    func makeDetailView(){
+        vaccineDetailView.addSubview(vaccineDetailHospName)
+        vaccineDetailView.addSubview(vaccineDetailHospAdr)
+        vaccineDetailView.addSubview(vaccineDetailDisName)
+        vaccineDetailView.addSubview(vaccineDetailvacName)
+        vaccineDetailView.addSubview(vaccineDetailPrice)
+        vaccineDetailView.addSubview(detailCloseButton)
+        
+        vaccineDetailView.snp.makeConstraints{
+            $0.bottom.leading.trailing.equalToSuperview()
+            $0.height.equalTo(250)
+        }
+        
+        vaccineDetailHospName.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(30)
+            $0.leading.equalToSuperview().offset(10)
+        }
+        vaccineDetailHospAdr.snp.makeConstraints{
+            $0.top.equalTo(vaccineDetailHospName.snp.bottom).offset(8)
+            $0.leading.equalToSuperview().offset(10)
+        }
+        vaccineDetailDisName.snp.makeConstraints{
+            $0.top.equalTo(vaccineDetailHospAdr.snp.bottom).offset(8)
+            $0.leading.equalToSuperview().offset(10)
+        }
+        vaccineDetailvacName.snp.makeConstraints{
+            $0.top.equalTo(vaccineDetailHospAdr.snp.bottom).offset(8)
+            $0.leading.equalTo(vaccineDetailDisName.snp.trailing).offset(8)
+        }
+        vaccineDetailPrice.snp.makeConstraints{
+            $0.top.equalTo(vaccineDetailvacName.snp.bottom).offset(8)
+            $0.leading.equalToSuperview().offset(10)
+        }
+        detailCloseButton.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(10)
+            $0.trailing.equalToSuperview().offset(-10)
+        }
+        
     }
     func makeButtons(){
         let disease1 = CustomDLRadioButton().then{
@@ -268,11 +336,14 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     // MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        vaccineDetailView.isHidden = true
         readData()
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.backgroundColor = .white
+        
         view.addSubview(headerView)
         view.addSubview(mapView)
+        view.addSubview(vaccineDetailView)
         mapView.delegate = self
         initCollectionView()
         allLayout()
@@ -293,11 +364,13 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     
     @objc func btnTouch(_ sender: UIButton){
         vaccineList = vaccineAllList.filter{$0.disId == sender.tag}
-//        selectedDisId = sender.tag
-//        vaccineList = vaccineAllList.filter{$0.disId == selectedDisId}
-//        print("selectedDisId는", selectedDisId)
         vaccineCollectionview.reloadData()
         vaccineCollectionview.reloadInputViews()
+    }
+    
+    @objc func closeButtonTapped(){
+        vaccineDetailView.isHidden = true
+        listUpButton.isHidden = false
     }
     
     @objc func myLocationButtonTapped(){
@@ -322,7 +395,22 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         item.showAnimationType = .noAnimation
         return item
     }
+    func mapView(_ mapView: MTMapView!, selectedPOIItem poiItem: MTMapPOIItem!) -> Bool {
+        vaccineDetailView.isHidden = false
+        listUpButton.isHidden = true
+        fetchDetailView(id: poiItem.tag)
+        return false
+    }
     
+    
+    func fetchDetailView(id: Int?){
+        vaccineDetailPrice.text = String(hospitalList[id!].price)
+        vaccineDetailvacName.text = hospitalList[id!].vaccineName
+        vaccineDetailDisName.text = hospitalList[id!].diseaseName
+        vaccineDetailHospName.text = hospitalList[id!].hospitalName
+        vaccineDetailHospAdr.text = hospitalList[id!].location
+        
+    }
     // MARK:- DB
     
     func readData(){
@@ -376,11 +464,12 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
                 print("Error getting data \(error)")
             }
             else if snapshot.exists() {
-                
                 guard let value = snapshot.value else {return}
+                print("this is value", value)
                 do {
                     let vaccine = try FirebaseDecoder().decode([vaccine].self, from: value)
-                    self.vaccineAllList = vaccine //어떻게 바깥에서도 바꿀 수 있게 할까?
+                    self.vaccineAllList = vaccine
+                    
                     print("this is diseasesList")
                     print(self.vaccineAllList[10])
                     outVaccineList(list: self.vaccineAllList)
@@ -402,6 +491,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     func allLayout(){
         headerViewLayout()
         mapViewLayout()
+        makeDetailView()
     }
     
     func headerViewLayout(){
@@ -476,6 +566,27 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         return count
     }
     
+    @objc func vaccineButtonTapped(sideEffect: String!){
+        showAlert(style: .alert, text : sideEffect)
+        print("야야야~~~~~ 헤헤헷 ")
+    }
+    
+    func showAlert(style: UIAlertController.Style, text: String) {
+            let alert = UIAlertController(title: "백신", message: text, preferredStyle: style)
+            let success = UIAlertAction(title: "네", style: .default) { (action) in
+                print("확인")
+            }
+            
+            let cancel = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
+            
+            alert.addAction(success)
+            alert.addAction(cancel)
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var vaccineCell: VaccineCollectionViewCell?
         vaccineCell = (collectionView.dequeueReusableCell(withReuseIdentifier: VaccineCollectionViewCell.identifier, for:indexPath) as? VaccineCollectionViewCell)
@@ -489,7 +600,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         //        vaccineCell?.button.titleLabel?.minimumScaleFactor = 0.5
         vaccineCell?.button.titleLabel?.numberOfLines = 1
         vaccineCell?.button.titleLabel?.sizeToFit()
-        
+
         if vaccineList[indexPath.row].selected == true {
             vaccineCell?.backgroundColor = selectedButtonColor
             vaccineList[indexPath.row].selected = false
@@ -504,9 +615,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         
         return vaccineCell!
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return [(NSString*)[arrayOfStats objectAtIndex:indexPath.row] sizeWithAttributes:NULL]
-       }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         vaccineList[indexPath.item].selected.toggle()
@@ -518,6 +626,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         for i in 0...temp.count-1 { //
             mapMarkers.append(poiItem(id: temp[i].id, hospName: temp[i].hospitalName, latitude: temp[i].latitude, longitude: temp[i].longitude))
         }
+        vaccineButtonTapped(sideEffect: vaccineList[indexPath.row].sideEffect)
         mapView.removeAllPOIItems()
         mapView.addPOIItems(mapMarkers)
         

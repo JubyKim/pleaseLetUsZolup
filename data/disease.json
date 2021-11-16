@@ -1,4 +1,4 @@
-[ {"disId" : 0, "disName" : "대상포진"}, 
+[ {"disId" : 0, "disName" : "대상포진", "sideEffect": "대상포진 부작용"},
 {"disId" : 1, "disName" : "로타바이러스"},
 {"disId" : 2, "disName" : "A형간염"},
 {"disId" : 3, "disName" : "수막구균"},

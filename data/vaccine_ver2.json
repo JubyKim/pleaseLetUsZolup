@@ -1,0 +1,390 @@
+[
+
+      {
+        "vacId": 0,
+        "disId": 0,
+        "vacName": "조스타박스주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "조스타박스주 부작용입니다."
+      },
+      {
+        "vacId": 1,
+        "disId": 0,
+        "vacName": "스카이조스터주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "스카이조스터주 부작용입니다."
+      },
+      {
+        "vacId": 2,
+        "disId": 1,
+        "vacName": "로타릭스프리필드",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "로타릭스프리필드 부작용입니다."
+      },
+      {
+        "vacId": 3,
+        "disId": 1,
+        "vacName": "로타텍액",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "로타텍액 부작용입니다."
+      },
+      {
+        "vacId": 4,
+        "disId": 2,
+        "vacName": "아박심160U성인용주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "아박심160U성인용주 부작용입니다."
+      },
+      {
+        "vacId": 5,
+        "disId": 2,
+        "vacName": "하브릭스주 1ml",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "하브릭스주 1ml 부작용입니다."
+      },
+      {
+        "vacId": 6,
+        "disId": 2,
+        "vacName": "박타프리필드 시린지 0.5ml",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "박타프리필드 시린지 0.5ml 부작용입니다."
+      },
+      {
+        "vacId": 7,
+        "disId": 2,
+        "vacName": "박타주 0.5ml",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "박타주 0.5ml 부작용입니다."
+      },
+      {
+        "vacId": 8,
+        "disId": 2,
+        "vacName": "박타프리필드 시린지 1ml",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "박타프리필드 시린지 1ml 부작용입니다."
+      },
+      {
+        "vacId": 9,
+        "disId": 2,
+        "vacName": "하브릭스주 0.5ml",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "하브릭스주 0.5ml 부작용입니다."
+      },
+      {
+        "vacId": 10,
+        "disId": 2,
+        "vacName": "아박심80U소아용주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "아박심80U소아용주 부작용입니다."
+      },
+      {
+        "vacId": 11,
+        "disId": 3,
+        "vacName": "멘비오",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "멘비오 부작용입니다."
+      },
+      {
+        "vacId": 12,
+        "disId": 3,
+        "vacName": "메낙트라주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "메낙트라주 부작용입니다."
+      },
+      {
+        "vacId": 13,
+        "disId": 4,
+        "vacName": "가다실프리필드시린지",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "가다실프리필드시린지 부작용입니다."
+      },
+      {
+        "vacId": 14,
+        "disId": 4,
+        "vacName": "서바릭스프리필드시린지",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "서바릭스프리필드시린지 부작용입니다."
+      },
+      {
+        "vacId": 15,
+        "disId": 4,
+        "vacName": "가다실9프리필드시린지",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "가다실9프리필드시린지 부작용입니다."
+      },
+      {
+        "vacId": 16,
+        "disId": 5,
+        "vacName": "지씨플루쿼드리밸런트프리필드시린지주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "지씨플루쿼드리밸런트프리필드시린지주 부작용입니다."
+      },
+      {
+        "vacId": 17,
+        "disId": 5,
+        "vacName": "플루아릭스테트라프리필드시린지",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "플루아릭스테트라프리필드시린지 부작용입니다."
+      },
+      {
+        "vacId": 18,
+        "disId": 5,
+        "vacName": "박씨그리프테트라주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "박씨그리프테트라주 부작용입니다."
+      },
+      {
+        "vacId": 19,
+        "disId": 5,
+        "vacName": "보령플루V테트라백신주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "보령플루V테트라백신주 부작용입니다."
+      },
+      {
+        "vacId": 20,
+        "disId": 5,
+        "vacName": "스카이셀플루4가프리필드시린지",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "스카이셀플루4가프리필드시린지 부작용입니다."
+      },
+      {
+        "vacId": 21,
+        "disId": 5,
+        "vacName": "보령플루Ⅷ테트라백신주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "보령플루Ⅷ테트라백신주 부작용입니다."
+      },
+      {
+        "vacId": 22,
+        "disId": 5,
+        "vacName": "비알플루텍III테트라백신프리필드시린지",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "비알플루텍III테트라백신프리필드시린지 부작용입니다."
+      },
+      {
+        "vacId": 23,
+        "disId": 5,
+        "vacName": "테라텍트프리필드시린지주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "테라텍트프리필드시린지주 부작용입니다."
+      },
+      {
+        "vacId": 24,
+        "disId": 5,
+        "vacName": "백시플루4가주사액프리필드시린지",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "백시플루4가주사액프리필드시린지 부작용입니다."
+      },
+      {
+        "vacId": 25,
+        "disId": 5,
+        "vacName": "코박스인플루4가PF주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "코박스인플루4가PF주 부작용입니다."
+      },
+      {
+        "vacId": 26,
+        "disId": 5,
+        "vacName": "코박스플루4가PF주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "코박스플루4가PF주 부작용입니다."
+      },
+      {
+        "vacId": 27,
+        "disId": 5,
+        "vacName": "비알플루텍I테트라백신주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "비알플루텍I테트라백신주 부작용입니다."
+      },
+      {
+        "vacId": 28,
+        "disId": 6,
+        "vacName": "지로티프-주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "지로티프-주 부작용입니다."
+      },
+      {
+        "vacId": 29,
+        "disId": 7,
+        "vacName": "에스케이티디백신주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "에스케이티디백신주 부작용입니다."
+      },
+      {
+        "vacId": 30,
+        "disId": 7,
+        "vacName": "녹십자티디백신프리필드시린지주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "녹십자티디백신프리필드시린지주 부작용입니다."
+      },
+      {
+        "vacId": 31,
+        "disId": 7,
+        "vacName": "티디퓨어주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "티디퓨어주 부작용입니다."
+      },
+      {
+        "vacId": 32,
+        "disId": 7,
+        "vacName": "디티부스터에스에스아이주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "디티부스터에스에스아이주 부작용입니다."
+      },
+      {
+        "vacId": 33,
+        "disId": 8,
+        "vacName": "프리베나13주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "프리베나13주 부작용입니다."
+      },
+      {
+        "vacId": 34,
+        "disId": 8,
+        "vacName": "프로디악스-23",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "프로디악스-23 부작용입니다."
+      },
+      {
+        "vacId": 35,
+        "disId": 8,
+        "vacName": "프로디악스-23프리필드시린지",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "프로디악스-23프리필드시린지 부작용입니다."
+      },
+      {
+        "vacId": 36,
+        "disId": 8,
+        "vacName": "신플로릭스프리필드시린지",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "신플로릭스프리필드시린지 부작용입니다."
+      },
+      {
+        "vacId": 37,
+        "disId": 8,
+        "vacName": "수두박스주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "수두박스주 부작용입니다."
+      },
+      {
+        "vacId": 38,
+        "disId": 9,
+        "vacName": "스카이바리셀라주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "스카이바리셀라주 부작용입니다."
+      },
+      {
+        "vacId": 39,
+        "disId": 9,
+        "vacName": "바리-엘백신",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "바리-엘백신 부작용입니다."
+      },
+      {
+        "vacId": 40,
+        "disId": 10,
+        "vacName": "부스트릭스프리필드시린지",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "부스트릭스프리필드시린지 부작용입니다."
+      },
+      {
+        "vacId": 41,
+        "disId": 10,
+        "vacName": "아다셀주",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "아다셀주 부작용입니다."
+      },
+      {
+        "vacId": 42,
+        "disId": 11,
+        "vacName": "한타박스 0.5ml",
+        "make": "sk",
+        "scope": "몰라",
+        "selected": false,
+        "sideEffect": "한타박스 0.5ml 부작용입니다."
+      }
+]

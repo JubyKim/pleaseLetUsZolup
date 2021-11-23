@@ -44,6 +44,9 @@ class MyPageViewController: UIViewController {
         $0.image = UIImage(named: "femaleImage")
     }
     
+    let testBadge = UIImageView().then{
+        $0.image = UIImage(named: "HAV")
+    }
     override func viewDidLoad() {
         navigationController?.navigationBar.isHidden = true
         super.viewDidLoad()
@@ -56,6 +59,7 @@ class MyPageViewController: UIViewController {
         self.view.addSubview(editButton)
         self.view.addSubview(shareButton)
         self.view.addSubview(LogoutButton)
+        self.view.addSubview(testBadge)
         
         picker.delegate = self
         
@@ -74,7 +78,7 @@ class MyPageViewController: UIViewController {
         nameLabelLayout()
         ageLabelLayout()
         sexImageLayout()
-        
+        badgeLayout()
         
     }
     func upperBackgroundLayout(){
@@ -145,6 +149,15 @@ class MyPageViewController: UIViewController {
     func openCamera(){
         picker.sourceType = .camera
         present(picker, animated: false, completion: nil)
+    }
+    func badgeLayout(){
+        testBadge.snp.makeConstraints{
+            $0.top.equalTo(profileBox.snp.bottom).offset(20)
+            $0.leading.equalToSuperview().offset(20)
+            $0.width.equalTo(100)
+            $0.height.equalTo(100)
+            
+        }
     }
     
     @objc func editButtonTapped(){

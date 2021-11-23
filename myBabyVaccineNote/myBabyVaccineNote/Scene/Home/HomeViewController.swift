@@ -107,7 +107,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     }
     let addressButton = UIButton().then{
         $0.backgroundColor = .none
-        $0.setTitle("강남구 신사동 ⌵ ", for: .normal)
+//        $0.setTitle("강남구 신사동 ⌵ ", for: .normal)
         $0.titleLabel?.textColor = .white
     }
     let diseaseTitle = UILabel().then{

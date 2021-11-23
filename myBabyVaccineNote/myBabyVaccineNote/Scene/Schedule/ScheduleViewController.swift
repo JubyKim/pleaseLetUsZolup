@@ -8,21 +8,39 @@
 import UIKit
 import FSCalendar
 import Then
+import Firebase
+import FirebaseFirestore
+import CodableFirebase
+import Foundation
+import Firebase
+
 
 class ScheduleViewController: UIViewController, FSCalendarDelegateAppearance {
-    let dateFormatter = DateFormatter()
     
+    let dateFormatter = DateFormatter()
+    private let ref: DatabaseReference! = Database.database().reference()
+    var diseasesList: [diseases] = [diseases(disId:0, disName: "대상포진", sideEffect: "대상포진부작용")]
     let cellReuseIdentifier = "EventTableViewCell"
+    
     
     struct event {
         var date : Date
         var events : String
     }
     
+    struct diseases : Codable
+    {
+        var disId : Int
+        var disName : String
+        var sideEffect : String
+    }
+    
+    
     var events = [DateFormatter().date(from: "2020-12-25")]
     var eventsList = [event(date: DateFormatter().date(from: "2021-11-15") ?? Date()
                             ,events: "가다실2가")]
-    
+    var eventsNameList = [" "]
+    var dateList = ["2021-11-15"]
     let calendar = FSCalendar().then{
         $0.scrollDirection = .vertical
         
@@ -36,12 +54,26 @@ class ScheduleViewController: UIViewController, FSCalendarDelegateAppearance {
     let eventTable = UITableView()
     
     let reservationView = UIView().then{
-        $0.backgroundColor = .yellow
+        $0.backgroundColor = .white
+    }
+    var showDateLabel = UILabel().then{
+        $0.font = UIFont(name: "GillSans-SemiBold", size: 15.0)
+    }
+    var pickerData: [String] = [String]()
+    
+    let diseaseNamePicker = UIPickerView()
+    let diseaseNameTitle = UILabel().then{
+        $0.font = UIFont(name: "GillSans-SemiBold", size: 15.0)
+        $0.text = "어떤 예방접종을 완료하셨나요?"
     }
     let reservationButton = UIButton().then{
-        $0.titleLabel?.text = "예약하기"
+//        $0.titleLabel?.text = "예약하기"
+        $0.setTitle("접종완료", for: .normal)
+        $0.titleLabel?.textColor = .black
+        $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 15.0)
         $0.addTarget(self, action: #selector(reservationButtonTapped), for: .touchUpInside)
-        $0.backgroundColor = .blue
+        $0.backgroundColor = .gray
+        
     }
     
     override func viewDidLoad() {
@@ -63,8 +95,20 @@ class ScheduleViewController: UIViewController, FSCalendarDelegateAppearance {
         reservationViewLayout()
         reservationView.isHidden = true
         eventTable.register(UITableViewCell.self, forCellReuseIdentifier: "EventTableViewCell")
+        //        loadDiseaseList()
+        //        temp = hospitalList.filter{$0.vaccineName == vaccineList[indexPath.item].vacName}
         
+        pickerData = ["대상포진", "A형간염","수막구균","사람유두종바이러스","인플루엔자","장티푸스","Td(파상풍, 디프테리아)","폐렴구균","수두","Tdap(파상풍, 디프테리아, 백일해)","신증후군출혈열"]
+        self.diseaseNamePicker.delegate = self
+        self.diseaseNamePicker.dataSource = self
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
     @objc func reservationButtonTapped(){
         reservationView.isHidden = true
     }
@@ -83,7 +127,7 @@ class ScheduleViewController: UIViewController, FSCalendarDelegateAppearance {
         calendar.snp.makeConstraints{
             $0.center.equalToSuperview()
             $0.trailing.leading.equalToSuperview()
-            $0.top.equalTo(view.safeAreaInsets.top).offset(20)
+            $0.top.equalTo(view.safeAreaInsets.top).offset(40)
             $0.bottom.equalToSuperview().offset(-340)
         }
     }
@@ -100,34 +144,59 @@ class ScheduleViewController: UIViewController, FSCalendarDelegateAppearance {
             $0.leading.equalToSuperview().offset(20)
             $0.trailing.equalToSuperview().offset(-20)
             $0.top.equalToSuperview().offset(170)
-            $0.bottom.equalToSuperview().offset(-170)
+            $0.bottom.equalToSuperview().offset(-250)
             $0.center.equalToSuperview()
         }
         reservationView.addSubview(reservationButton)
+        reservationView.addSubview(diseaseNameTitle)
+        reservationView.addSubview(diseaseNamePicker)
+        reservationView.addSubview(showDateLabel)
+        
+        showDateLabel.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(20)
+            $0.centerX.equalToSuperview()
+        }
+        diseaseNameTitle.snp.makeConstraints{
+            $0.top.equalTo(showDateLabel.snp.bottom).offset(10)
+            $0.centerX.equalToSuperview()
+        }
+        diseaseNamePicker.snp.makeConstraints{
+            $0.top.equalTo(diseaseNameTitle.snp.bottom).offset(10)
+            $0.centerX.equalToSuperview()
+        }
         reservationButton.snp.makeConstraints{
             $0.bottom.equalToSuperview().offset(-20)
             $0.leading.equalToSuperview().offset(20)
             $0.trailing.equalToSuperview().offset(-20)
-            
         }
         
     }
     
-        func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
-    
-                switch dateFormatter.string(from: date) {
-                case dateFormatter.string(from: Date()):
-                    return "오늘"
-                case "2021-11-22":
-                    return "출근"
-                case "2021-11-23":
-                    return "지각"
-                case "2021-11-24":
-                    return "결근"
-                default:
-                    return nil
-                }
+    func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
+        
+        if dateList.count < 2 {
+            if date == dateFormatter.date(from: dateList[0])! {
+                return eventsNameList[0]
             }
+            else {
+                return nil
+                
+            }
+        }
+        if dateList.count > 1 {
+            if date == dateFormatter.date(from: dateList[0])! {
+                return eventsNameList[0]
+            }
+            if date == dateFormatter.date(from: dateList[1])! {
+                return eventsNameList[1]
+            }
+            else {
+                return nil
+            }
+        }
+        return nil
+    }
+    
     
 }
 
@@ -143,8 +212,22 @@ extension ScheduleViewController: FSCalendarDelegate, FSCalendarDataSource {
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         reservationView.isHidden = false
+        showDateLabel.text = dateFormatter.string(from: date)
     }
-
+    
+    func addEvent(date: String, event: String){
+        print("this is date", date)
+        print("this is event", event)
+        eventsNameList.append(event)
+        dateList.append(date)
+        print("여기서 확인하는 eventNameList", eventsNameList)
+        print("여기서 확인하는 dateList", dateList)
+        //        calendar.reloadData()
+//        calendar.reloadInputViews()
+        calendar.reloadData()
+        //        eventsList.append(events(date: dateFormatter.date(from: date)!, event: event))
+    }
+    
 }
 
 extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource{
@@ -152,7 +235,7 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource{
         self.eventTable.dataSource = self
         self.eventTable.delegate = self
         self.eventTable.register(EventTableViewCell.self, forCellReuseIdentifier: EventTableViewCell.identifier)
-    
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -164,9 +247,31 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource{
         
         cell?.event.text = eventsList[indexPath.row].events
         cell?.date.text = dateFormatter.string(from: eventsList[indexPath.row].date)
-        print("여깄슈", eventsList[indexPath.row].events)
-        print(dateFormatter.string(from: eventsList[indexPath.row].date))
         return cell ?? UITableViewCell()
+    }
+}
+
+
+extension ScheduleViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print(pickerData[row])
+        print(showDateLabel.text!)
+        addEvent(date: showDateLabel.text!, event: pickerData[row])
+        
+        //        calendar.reloa
+        //        addEvent(date: showDateLabel.text!, event: )
     }
 }
 

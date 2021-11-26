@@ -91,6 +91,8 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     // MARK:- List
     
     var mapMarkers : [MTMapPOIItem] = []
+    var currentMarkersList : [MTMapPOIItem] = []
+    var currentList : [vaccineAndHospital] = []
     var justArray = [1]
     var diseasesList: [diseases] = [diseases(disId:0, disName: "대상포진", sideEffect: "대상포진부작용")]
     var vaccineOUTList : [vaccine] = [vaccine(vacId:1 , disId: 0, vacName: "조스타박스주", make : "sk", scope: "몰라", selected: false, sideEffect: "q")]
@@ -126,6 +128,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         cv.backgroundColor = .none
         return cv
     }()
+    
     let myLocationButton = UIButton().then{
         $0.setBackgroundImage(UIImage(named:"currentLocationButton"), for: .normal)
         $0.addTarget(self, action: #selector(myLocationButtonTapped), for: .touchUpInside)
@@ -141,8 +144,15 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         $0.setTitle("목록보기", for: .normal)
         $0.setTitleColor(.gray, for: .normal)
         $0.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
+        $0.addTarget(self, action: #selector(listBtnTapped), for: .touchUpInside)
         print($0.titleLabel?.font)
     }
+    
+    let listTableView = UITableView().then{
+        $0.separatorStyle = .none
+        $0.register(ListTableViewCell.self, forCellReuseIdentifier: ListTableViewCell.identifier)
+        $0.backgroundColor = .yellow
+        }
     
     // MARK:- RadioButton
     let stackViewScrollView = UIScrollView()
@@ -350,6 +360,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     // MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        listTableView.isHidden = true
         vaccineDetailView.isHidden = true
         readData()
         self.navigationController?.navigationBar.isHidden = true
@@ -358,6 +369,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         view.addSubview(headerView)
         view.addSubview(mapView)
         view.addSubview(vaccineDetailView)
+        view.addSubview(listTableView)
         mapView.delegate = self
         initCollectionView()
         allLayout()
@@ -381,7 +393,14 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         vaccineCollectionview.reloadData()
         vaccineCollectionview.reloadInputViews()
         vaccineButtonTapped(sideEffect: diseasesList[sender.tag].sideEffect)
-        
+    }
+    
+    @objc func listBtnTapped() {
+        listTableView.reloadInputViews()
+        vaccineCollectionview.reloadData()
+        vaccineCollectionview.reloadInputViews()
+        listTableView.isHidden = false
+        listUpButton.isHidden = true
     }
     
     @objc func closeButtonTapped(){
@@ -417,6 +436,10 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         fetchDetailView(id: poiItem.tag)
         return false
     }
+    func mapView(_ mapView: MTMapView!, singleTapOn mapPoint: MTMapPoint!) {
+        listUpButton.isHidden = false
+        listTableView.isHidden = true
+    }
     
     
     func fetchDetailView(id: Int?){
@@ -442,8 +465,6 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
                 do {
                     let vaccineAndHospital = try FirebaseDecoder().decode([vaccineAndHospital].self, from: value)
                     self.hospitalList = vaccineAndHospital
-                    print("this is hospitalList")
-                    print(self.hospitalList[10])
                 } catch let err {
                     print (err)
                 }
@@ -464,8 +485,6 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
                 do {
                     let disease = try FirebaseDecoder().decode([diseases].self, from: value)
                     self.diseasesList = disease
-                    print("this is diseasesList")
-                    print(self.diseasesList[10])
                     makeButtons()
                 } catch let err {
                     print (err)
@@ -485,9 +504,6 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
                 do {
                     let vaccine = try FirebaseDecoder().decode([vaccine].self, from: value)
                     self.vaccineAllList = vaccine
-                    
-                    print("this is diseasesList")
-                    print(self.vaccineAllList[10])
                     outVaccineList(list: self.vaccineAllList)
                 } catch let err {
                     print (err)
@@ -508,6 +524,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         headerViewLayout()
         mapViewLayout()
         makeDetailView()
+        tableviewLayout()
     }
     
     func headerViewLayout(){
@@ -566,6 +583,40 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
             $0.leading.equalTo(mapView).offset(10)
         }
     }
+    
+    func tableviewLayout(){
+        listTableView.snp.makeConstraints{
+            $0.bottom.leading.trailing.equalToSuperview()
+            
+        }
+    }
+    
+    private func findCurrentMarker(temp: [vaccineAndHospital]) { //현재 보이는 맵에 있는 Marker들에 해당하는 것만.
+        let bounds = self.mapView.mapBounds
+        let southWest = bounds?.bottomLeft
+        let northEast = bounds?.topRight
+        currentList = temp.filter{$0.latitude > (southWest?.mapPointGeo().latitude)! &&
+                                                $0.latitude < (northEast?.mapPointGeo().latitude)! &&
+                                                $0.longitude > (southWest?.mapPointGeo().longitude)! &&
+                                                $0.longitude < (northEast?.mapPointGeo().longitude)!}
+        print("currnetList의 갯수는?", currentList.count)
+    }
+    
+    
+//        for i in 0 ... currentList.count-1 {
+//            currentMarkersList.append(poiItem(id: currentList[i].id, hospName: currentList[i].hospitalName, latitude: currentList[i].latitude, longitude: currentList[i].longitude))
+//        }
+//        if mapView.poiItems.count > 0 {
+//            mapView.removeAllPOIItems()
+//        }
+//        mapView.addPOIItems(currentMarkersList)
+//        currentMarkersList = []
+//    }
+//
+    func mapView(_ mapView: MTMapView!, centerPointMovedTo mapCenterPoint: MTMapPoint!) {
+        print("move")
+    }
+    
 }
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -646,6 +697,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             mapMarkers.append(poiItem(id: temp[i].id, hospName: temp[i].hospitalName, latitude: temp[i].latitude, longitude: temp[i].longitude))
         }
 //        vaccineButtonTapped(sideEffect: vaccineList[indexPath.row].sideEffect)
+        findCurrentMarker(temp: temp)
         mapView.removeAllPOIItems()
         mapView.addPOIItems(mapMarkers)
         
@@ -670,6 +722,27 @@ extension Identifiable {
         return String(describing: self)
     }
 }
+
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return currentList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as? ListTableViewCell
+        
+        cell?.HospName.text = currentList[indexPath.row].hospitalName
+        cell?.HospAdr.text = currentList[indexPath.row].location
+        cell?.DisName.text = currentList[indexPath.row].diseaseName
+        cell?.vacName.text = currentList[indexPath.row].vaccineName
+        cell?.Price.text = String(currentList[indexPath.row].price)
+        return cell!
+    }
+    
+}
+
 extension UITableViewCell: Identifiable {}
 extension UICollectionViewCell: Identifiable {}
 extension UIViewController: Identifiable {}

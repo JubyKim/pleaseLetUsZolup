@@ -36,6 +36,7 @@
 		304E49EA2716A84A00E71995 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304E49E92716A84A00E71995 /* MyPageViewController.swift */; };
 		307B52BD273AA6C70071583E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 307B52BC273AA6C70071583E /* GoogleService-Info.plist */; };
 		30A47E0F2743946A001155B2 /* ExtensionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A47E0E2743946A001155B2 /* ExtensionVC.swift */; };
+		30A47E112750B6FC001155B2 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A47E102750B6FC001155B2 /* ListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -82,6 +83,7 @@
 		304E49E92716A84A00E71995 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		307B52BC273AA6C70071583E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		30A47E0E2743946A001155B2 /* ExtensionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExtensionVC.swift; path = /Users/jubykim/Desktop/pleaseLetUsZolup/myBabyVaccineNote/myBabyVaccineNote/ExtensionVC.swift; sourceTree = "<absolute>"; };
+		30A47E102750B6FC001155B2 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		30FF07CE2739329000318D53 /* fluent */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fluent; path = ../../../Downloads/fluent; sourceTree = "<group>"; };
 		30FF07D1273932AD00318D53 /* fluent */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fluent; path = ../../../Downloads/fluent; sourceTree = "<group>"; };
 		38AC0467EBAC23B2BD53876C /* Pods-myBabyVaccineNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myBabyVaccineNote.release.xcconfig"; path = "Target Support Files/Pods-myBabyVaccineNote/Pods-myBabyVaccineNote.release.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		3013161A270438D700683F66 /* ReusableCell */ = {
 			isa = PBXGroup;
 			children = (
+				30A47E102750B6FC001155B2 /* ListTableViewCell.swift */,
 				3013161E27043C5E00683F66 /* VaccineCollectionViewCell.swift */,
 				301382362731460500DC6C9B /* EventTableViewCell.swift */,
 			);
@@ -388,6 +391,7 @@
 				3013161F27043C5E00683F66 /* VaccineCollectionViewCell.swift in Sources */,
 				301315E427041BC600683F66 /* AppDelegate.swift in Sources */,
 				304E49E62716A83600E71995 /* HistoryViewController.swift in Sources */,
+				30A47E112750B6FC001155B2 /* ListTableViewCell.swift in Sources */,
 				301382352730C1AA00DC6C9B /* eventViewController.swift in Sources */,
 				301315E627041BC600683F66 /* SceneDelegate.swift in Sources */,
 				304E49E82716A84100E71995 /* ScheduleViewController.swift in Sources */,

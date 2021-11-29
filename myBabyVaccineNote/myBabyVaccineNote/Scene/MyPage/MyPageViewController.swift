@@ -47,6 +47,10 @@ class MyPageViewController: UIViewController {
     let testBadge = UIImageView().then{
         $0.image = UIImage(named: "HAV")
     }
+    let naisseriaBadge = UIImageView().then{
+        $0.image = UIImage(named: "Naisseria")
+    }
+    
     override func viewDidLoad() {
         navigationController?.navigationBar.isHidden = true
         super.viewDidLoad()
@@ -60,6 +64,7 @@ class MyPageViewController: UIViewController {
         self.view.addSubview(shareButton)
         self.view.addSubview(LogoutButton)
         self.view.addSubview(testBadge)
+        self.view.addSubview(naisseriaBadge)
         
         picker.delegate = self
         
@@ -128,6 +133,7 @@ class MyPageViewController: UIViewController {
         print(#function)
         sexImage.snp.makeConstraints{
             $0.leading.equalTo(nameLabel.snp.trailing).offset(10)
+            $0.top.equalTo(nameLabel)
         }
     }
     func shareButtonLayout(){
@@ -154,9 +160,13 @@ class MyPageViewController: UIViewController {
         testBadge.snp.makeConstraints{
             $0.top.equalTo(profileBox.snp.bottom).offset(20)
             $0.leading.equalToSuperview().offset(20)
-            $0.width.equalTo(100)
-            $0.height.equalTo(100)
-            
+            $0.width.height.equalTo(100)
+        }
+        
+        naisseriaBadge.snp.makeConstraints{
+            $0.top.equalTo(profileBox.snp.bottom).offset(20)
+            $0.leading.equalTo(testBadge.snp.trailing).offset(20)
+            $0.width.height.equalTo(100)
         }
     }
     

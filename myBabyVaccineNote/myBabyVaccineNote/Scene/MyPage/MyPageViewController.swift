@@ -21,6 +21,8 @@ class MyPageViewController: UIViewController {
     }
     let profilePhoto = UIImageView().then{
         $0.image = UIImage(named: "ProfileImage")
+        $0.layer.cornerRadius = $0.frame.size.height / 2
+        $0.clipsToBounds = true
     }
     let editButton = UIButton().then{
         $0.setBackgroundImage(UIImage(named: "editButton"), for: .normal)
@@ -107,6 +109,7 @@ class MyPageViewController: UIViewController {
         profilePhoto.snp.makeConstraints{
             $0.bottom.equalTo(profileBox.snp.top).offset(30)
             $0.centerX.equalTo(profileBox)
+            $0.width.height.equalTo(150)
         }
     }
     func editButtonLayout(){
@@ -171,19 +174,13 @@ class MyPageViewController: UIViewController {
     }
     
     @objc func editButtonTapped(){
-        let alert =  UIAlertController(title: "어디서 사진을 가져올까요?", message: "어디어디", preferredStyle: .actionSheet)
+        let alert =  UIAlertController(title: "어디서 사진을 가져올까요?", message: "사진앨범과 카메라실행 중 선택하세요.", preferredStyle: .actionSheet)
         let library =  UIAlertAction(title: "사진앨범", style: .default) { (action) in self.openLibrary()}
-        
         let camera =  UIAlertAction(title: "카메라", style: .default) { (action) in self.openCamera()}
-        
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        
         alert.addAction(library)
-        
         alert.addAction(camera)
-        
         alert.addAction(cancel)
-        
         present(alert, animated: true, completion: nil)
     }
 }
@@ -193,7 +190,6 @@ extension MyPageViewController : UIImagePickerControllerDelegate, UINavigationCo
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
             profilePhoto.image = image
             print(info)
-            
         }
         
         dismiss(animated: true, completion: nil)

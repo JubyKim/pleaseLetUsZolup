@@ -173,31 +173,14 @@ class ScheduleViewController: UIViewController, FSCalendarDelegateAppearance {
     }
     
     func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
-        
-        if dateList.count < 2 {
-            if date == dateFormatter.date(from: dateList[0])! {
-                return eventsNameList[0]
-            }
-            else {
-                return nil
-                
-            }
-        }
-        if dateList.count > 1 {
-            if date == dateFormatter.date(from: dateList[0])! {
-                return eventsNameList[0]
-            }
-            if date == dateFormatter.date(from: dateList[1])! {
-                return eventsNameList[1]
-            }
-            else {
-                return nil
+        for i in 0...dateList.count-1{
+            print(i)
+            if date == dateFormatter.date(from: dateList[i]){
+                return eventsNameList[i]
             }
         }
         return nil
     }
-    
-    
 }
 
 extension ScheduleViewController: FSCalendarDelegate, FSCalendarDataSource {
@@ -216,16 +199,10 @@ extension ScheduleViewController: FSCalendarDelegate, FSCalendarDataSource {
     }
     
     func addEvent(date: String, event: String){
-        print("this is date", date)
-        print("this is event", event)
         eventsNameList.append(event)
         dateList.append(date)
-        print("여기서 확인하는 eventNameList", eventsNameList)
-        print("여기서 확인하는 dateList", dateList)
-        //        calendar.reloadData()
-//        calendar.reloadInputViews()
         calendar.reloadData()
-        //        eventsList.append(events(date: dateFormatter.date(from: date)!, event: event))
+
     }
     
 }

@@ -12,7 +12,7 @@ import SnapKit
 class VaccineCollectionViewCell: UICollectionViewCell {
     let button = UIButton().then{
         $0.isUserInteractionEnabled = false
-        $0.addTarget(self, action: #selector(vaccineButtonTapped), for: .touchUpInside)
+//        $0.addTarget(self, action: #selector(vaccineButtonTapped), for: .touchUpInside)
 //        $0.sizeToFit()
     }
     

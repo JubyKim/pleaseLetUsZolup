@@ -614,8 +614,6 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
             $0.latitude < (northEast?.mapPointGeo().latitude)! &&
             $0.longitude > (southWest?.mapPointGeo().longitude)! &&
             $0.longitude < (northEast?.mapPointGeo().longitude)!}
-        print("currnetList의 갯수는?", currentList.count)
-        print("currentList 내용을 보자잇~", currentList)
     }
     
     func mapView(_ mapView: MTMapView!, centerPointMovedTo mapCenterPoint: MTMapPoint!) {

@@ -92,7 +92,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     
     var mapMarkers : [MTMapPOIItem] = []
     var currentMarkersList : [MTMapPOIItem] = []
-    var currentList : [vaccineAndHospital] = []
+    var currentList = [vaccineAndHospital(id: 40, hospitalName: "경희대학교병원", diseaseName: "수막구균", vaccineName: "멘비오", price: 120000, location: "서울 동대문구", latitude: 37.593884, longitude: 127.0513235, sideeffect: "부작용"),]
     var justArray = [1]
     var diseasesList: [diseases] = [diseases(disId:0, disName: "대상포진", sideEffect: "대상포진부작용")]
     var vaccineOUTList : [vaccine] = [vaccine(vacId:1 , disId: 0, vacName: "조스타박스주", make : "sk", scope: "몰라", selected: false, sideEffect: "q")]
@@ -109,14 +109,20 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     }
     let addressButton = UIButton().then{
         $0.backgroundColor = .none
-//        $0.setTitle("강남구 신사동 ⌵ ", for: .normal)
+        //        $0.setTitle("강남구 신사동 ⌵ ", for: .normal)
         $0.titleLabel?.textColor = .white
     }
     let diseaseTitle = UILabel().then{
+        $0.font = UIFont(name: "GillSans-SemiBold", size: 18.0)
+        $0.textColor = UIColor(red: 64/255, green: 169/255, blue: 255/255, alpha: 1)
         $0.text = "질병"
     }
     let vaccineTitle = UILabel().then{
         $0.text = "백신"
+        $0.font = UIFont(name: "GillSans-SemiBold", size: 18.0)
+        $0.textColor = UIColor(red: 64/255, green: 169/255, blue: 255/255, alpha: 1)
+//        #64 169 255
+        
     }
     let vaccineCollectionview : UICollectionView = {
         
@@ -135,7 +141,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     }
     
     let mapView = MTMapView().then {
-        $0.setMapCenter(.init(geoCoord: .init(latitude: 37.537229, longitude: 127.005515)), animated: true)
+        $0.setMapCenter(.init(geoCoord: .init(latitude: 37.5787, longitude: 126.9976)), animated: true)
         $0.baseMapType = .standard
     }
     
@@ -149,12 +155,13 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     }
     
     let listTableView = UITableView().then{
-        $0.separatorStyle = .none
-//        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        $0.register(ListTableViewCell.self, forCellReuseIdentifier: ListTableViewCell.identifier)
-        $0.backgroundColor = .yellow
-        
-        }
+        //        $0.separatorStyle = .none
+        //        self.tableView.register(ListTableViewCell.self, forCellReuseIdentifier: "cell")
+        //        $0.register(ListTableViewCell.self, forCellReuseIdentifier: ListTableViewCell.identifier)
+        $0.backgroundColor = .white
+    }
+    
+    //    let listTableViewCell = UItableviewcell()
     
     // MARK:- RadioButton
     let stackViewScrollView = UIScrollView()
@@ -374,6 +381,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         view.addSubview(listTableView)
         mapView.delegate = self
         initCollectionView()
+        initTableView()
         allLayout()
         view.addSubview(listUpButton)
         listUpButton.snp.makeConstraints{
@@ -398,11 +406,13 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     }
     
     @objc func listBtnTapped() {
-        listTableView.reloadInputViews()
+        //        listTableView.reloadInputViews()
+        listTableView.reloadData()
         vaccineCollectionview.reloadData()
-        vaccineCollectionview.reloadInputViews()
+        //        vaccineCollectionview.reloadInputViews()
         listTableView.isHidden = false
         listUpButton.isHidden = true
+        
     }
     
     @objc func closeButtonTapped(){
@@ -413,12 +423,15 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     @objc func myLocationButtonTapped(){
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         let currentLocation = locationManager.location?.coordinate
-        let lat = currentLocation?.latitude.magnitude ?? 37.5663
-        let lng = currentLocation?.longitude.magnitude ?? 126.9779
+        //        let lat = currentLocation?.latitude.magnitude ?? 37.5663
+        //        let lng = currentLocation?.longitude.magnitude ?? 126.9779
+        
+        let lat = 37.5666
+        let lng = 126.9977
         
         self.mapView.setMapCenter(MTMapPoint(geoCoord: MTMapPointGeo(latitude: lat, longitude: lng)), animated: false)
         mapView.showCurrentLocationMarker = true
-        mapView.currentLocationTrackingMode = .onWithoutHeading
+        //        mapView.currentLocationTrackingMode = .onWithoutHeading
     }
     
     func poiItem(id: Int, hospName: String, latitude: Double, longitude: Double) -> MTMapPOIItem {
@@ -427,17 +440,18 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         item.markerType = .customImage
         item.customImage = UIImage(named: "mapMarker")
         item.markerSelectedType = .customImage
-        //        item.customSelectedImage = UIImage(named: "iconMapAct")
         item.mapPoint = MTMapPoint(geoCoord: .init(latitude: latitude, longitude: longitude))
         item.showAnimationType = .noAnimation
         return item
     }
+    
     func mapView(_ mapView: MTMapView!, selectedPOIItem poiItem: MTMapPOIItem!) -> Bool {
         vaccineDetailView.isHidden = false
         listUpButton.isHidden = true
         fetchDetailView(id: poiItem.tag)
         return false
     }
+    
     func mapView(_ mapView: MTMapView!, singleTapOn mapPoint: MTMapPoint!) {
         listUpButton.isHidden = false
         listTableView.isHidden = true
@@ -445,7 +459,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     
     
     func fetchDetailView(id: Int?){
-        vaccineDetailPrice.text = String(hospitalList[id!].price)
+        vaccineDetailPrice.text = String(hospitalList[id!].price) + "원"
         vaccineDetailvacName.text = hospitalList[id!].vaccineName
         vaccineDetailDisName.text = hospitalList[id!].diseaseName
         vaccineDetailHospName.text = hospitalList[id!].hospitalName
@@ -530,7 +544,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     func headerViewLayout(){
         headerView.snp.makeConstraints(){
             $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(UIScreen.main.bounds.height / 5)
+            $0.height.equalTo(UIScreen.main.bounds.height / 5 - 30)
         }
         headerView.addSubview(addressButton)
         addressButton.snp.makeConstraints(){
@@ -539,8 +553,8 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         }
         headerView.addSubview(diseaseTitle)
         diseaseTitle.snp.makeConstraints{
-            $0.leading.equalToSuperview().offset(8)
-            $0.top.equalTo(addressButton.snp.bottom).offset(16)
+            $0.leading.equalToSuperview().offset(15)
+            $0.top.equalTo(addressButton.snp.bottom)
         }
         headerView.addSubview(stackViewScrollView)
         stackViewScrollView.addSubview(radioButtonStackVIew)
@@ -548,7 +562,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
             $0.leading.equalTo(diseaseTitle.snp.trailing).offset(8)
             $0.trailing.equalToSuperview().offset(-8)
             $0.height.equalTo(30)
-            $0.centerY.equalTo(diseaseTitle)
+            $0.centerY.equalTo(diseaseTitle).offset(5)
         }
         radioButtonStackVIew.snp.makeConstraints{
             $0.top.bottom.leading.trailing.equalToSuperview()
@@ -560,7 +574,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         
         headerView.addSubview(vaccineTitle)
         vaccineTitle.snp.makeConstraints{
-            $0.leading.equalToSuperview().offset(8)
+            $0.leading.equalToSuperview().offset(15)
             $0.top.equalTo(radioButtonStackVIew.snp.bottom).offset(16)
         }
         
@@ -587,7 +601,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     func tableviewLayout(){
         listTableView.snp.makeConstraints{
             $0.bottom.leading.trailing.equalToSuperview()
-            $0.height.equalTo(180)
+            $0.height.equalTo(230)
             
         }
     }
@@ -597,32 +611,21 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
         let southWest = bounds?.bottomLeft
         let northEast = bounds?.topRight
         currentList = temp.filter{$0.latitude > (southWest?.mapPointGeo().latitude)! &&
-                                                $0.latitude < (northEast?.mapPointGeo().latitude)! &&
-                                                $0.longitude > (southWest?.mapPointGeo().longitude)! &&
-                                                $0.longitude < (northEast?.mapPointGeo().longitude)!}
+            $0.latitude < (northEast?.mapPointGeo().latitude)! &&
+            $0.longitude > (southWest?.mapPointGeo().longitude)! &&
+            $0.longitude < (northEast?.mapPointGeo().longitude)!}
         print("currnetList의 갯수는?", currentList.count)
         print("currentList 내용을 보자잇~", currentList)
     }
     
-    
-//        for i in 0 ... currentList.count-1 {
-//            currentMarkersList.append(poiItem(id: currentList[i].id, hospName: currentList[i].hospitalName, latitude: currentList[i].latitude, longitude: currentList[i].longitude))
-//        }
-//        if mapView.poiItems.count > 0 {
-//            mapView.removeAllPOIItems()
-//        }
-//        mapView.addPOIItems(currentMarkersList)
-//        currentMarkersList = []
-//    }
-//
     func mapView(_ mapView: MTMapView!, centerPointMovedTo mapCenterPoint: MTMapPoint!) {
-        print("move")
+        listTableView.reloadData()
+        vaccineCollectionview.reloadData()
     }
     
 }
 
-extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    
+extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     public func initCollectionView() {
         self.vaccineCollectionview.delegate = self
         self.vaccineCollectionview.dataSource = self
@@ -639,25 +642,19 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         showAlert(style: .alert, text : sideEffect)
     }
     
-//    func vaccineButtonTapped2(sideEffect: String!){
-//        showAlert(style: .alert, text : sideEffect)
-//    }
-    
     func showAlert(style: UIAlertController.Style, text: String) {
-            let alert = UIAlertController(title: "백신", message: text, preferredStyle: style)
-            let success = UIAlertAction(title: "네", style: .default) { (action) in
-                print("확인")
-            }
-            
-            let cancel = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
-            
-            alert.addAction(success)
-            alert.addAction(cancel)
-            
-            self.present(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "백신", message: text, preferredStyle: style)
+        let success = UIAlertAction(title: "네", style: .default) { (action) in
+            print("확인")
         }
-
-    
+        
+        let cancel = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
+        
+        alert.addAction(success)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var vaccineCell: VaccineCollectionViewCell?
@@ -671,8 +668,8 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         vaccineCell?.button.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
         //        vaccineCell?.button.titleLabel?.minimumScaleFactor = 0.5
         vaccineCell?.button.titleLabel?.numberOfLines = 1
-        vaccineCell?.button.titleLabel?.sizeToFit()
-
+        vaccineCell?.button.contentEdgeInsets = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
+        //        vaccineCell?.layer.fs_width = 60
         if vaccineList[indexPath.row].selected == true {
             vaccineCell?.backgroundColor = selectedButtonColor
             vaccineList[indexPath.row].selected = false
@@ -698,7 +695,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         for i in 0...temp.count-1 { //
             mapMarkers.append(poiItem(id: temp[i].id, hospName: temp[i].hospitalName, latitude: temp[i].latitude, longitude: temp[i].longitude))
         }
-//        vaccineButtonTapped(sideEffect: vaccineList[indexPath.row].sideEffect)
+        //        vaccineButtonTapped(sideEffect: vaccineList[indexPath.row].sideEffect)
         findCurrentMarker(temp: temp)
         mapView.removeAllPOIItems()
         mapView.addPOIItems(mapMarkers)
@@ -708,12 +705,33 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         collectionView.reloadData()
         collectionView.reloadInputViews()
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 20)
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 5.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout
+                        collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
+    }
+    
 }
+
+
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+////        let sectionInsets =
+//    }
+
+
 
 protocol Identiifiable {
     static var identifier: String { get }
@@ -727,14 +745,21 @@ extension Identifiable {
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     
+    public func initTableView() {
+        self.listTableView.delegate = self
+        self.listTableView.dataSource = self
+        //        self.listTableView.register
+        self.listTableView.register(ListTableViewCell.self, forCellReuseIdentifier: ListTableViewCell.identifier)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as? ListTableViewCell
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier,
+                                                 for: indexPath) as? ListTableViewCell
+        cell?.makeLayout()
         cell?.HospName.text = currentList[indexPath.row].hospitalName
         cell?.HospAdr.text = currentList[indexPath.row].location
         cell?.DisName.text = currentList[indexPath.row].diseaseName

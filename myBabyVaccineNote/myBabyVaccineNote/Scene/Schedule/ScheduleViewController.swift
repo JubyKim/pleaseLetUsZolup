@@ -269,9 +269,6 @@ extension ScheduleViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         print(pickerData[row])
         print(showDateLabel.text!)
         addEvent(date: showDateLabel.text!, event: pickerData[row])
-        
-        //        calendar.reloa
-        //        addEvent(date: showDateLabel.text!, event: )
     }
 }
 

@@ -37,20 +37,20 @@ class ListTableViewCell: UITableViewCell {
             $0.leading.equalToSuperview().offset(8)
         }
         
-        HospAdr.snp.makeConstraints{
-            $0.top.equalTo(HospName.snp.bottom).offset(4)
-            $0.leading.equalToSuperview().offset(8)
-        }
-        DisName.snp.makeConstraints{
-            $0.top.equalTo(HospAdr.snp.bottom).offset(4)
-            $0.leading.equalToSuperview().offset(8)
-        }
-        vacName.snp.makeConstraints{
-            $0.top.equalTo(HospAdr.snp.bottom).offset(4)
-            $0.leading.equalTo(DisName.snp.trailing).offset(4)
-        }
+//        HospAdr.snp.makeConstraints{
+//            $0.top.equalTo(HospName.snp.bottom).offset(4)
+//            $0.leading.equalToSuperview().offset(8)
+//        }
+//        DisName.snp.makeConstraints{
+//            $0.top.equalTo(HospAdr.snp.bottom).offset(4)
+//            $0.leading.equalToSuperview().offset(8)
+//        }
+//        vacName.snp.makeConstraints{
+//            $0.top.equalTo(HospAdr.snp.bottom).offset(4)
+//            $0.leading.equalTo(DisName.snp.trailing).offset(4)
+//        }
         Price.snp.makeConstraints{
-            $0.top.equalTo(DisName.snp.bottom).offset(4)
+            $0.top.equalTo(HospName.snp.bottom).offset(4)
             $0.leading.equalToSuperview().offset(8)
         }
     }
@@ -69,7 +69,7 @@ class ListTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         print("이거 불러지나~~~~ 어디보자~~~~")
         contentView.snp.makeConstraints{
-            $0.height.equalTo(40)
+//            $0.height.equalTo(40)
             $0.top.leading.trailing.equalToSuperview()
         }
         contentView.addSubview(HospName)
@@ -77,7 +77,7 @@ class ListTableViewCell: UITableViewCell {
         contentView.addSubview(DisName)
         contentView.addSubview(vacName)
         contentView.addSubview(Price)
-        contentView.backgroundColor = .blue
+//        contentView.backgroundColor = .blue
         makeLayout()
     }
     

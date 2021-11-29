@@ -150,8 +150,10 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     
     let listTableView = UITableView().then{
         $0.separatorStyle = .none
+//        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         $0.register(ListTableViewCell.self, forCellReuseIdentifier: ListTableViewCell.identifier)
         $0.backgroundColor = .yellow
+        
         }
     
     // MARK:- RadioButton
@@ -479,9 +481,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
                 print("Error getting data \(error)")
             }
             else if snapshot.exists() {
-                
                 guard let value = snapshot.value else {return}
-                print("this is value", value)
                 do {
                     let disease = try FirebaseDecoder().decode([diseases].self, from: value)
                     self.diseasesList = disease
@@ -587,6 +587,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
     func tableviewLayout(){
         listTableView.snp.makeConstraints{
             $0.bottom.leading.trailing.equalToSuperview()
+            $0.height.equalTo(180)
             
         }
     }
@@ -600,6 +601,7 @@ class HomeViewController: UIViewController, MTMapViewDelegate, CLLocationManager
                                                 $0.longitude > (southWest?.mapPointGeo().longitude)! &&
                                                 $0.longitude < (northEast?.mapPointGeo().longitude)!}
         print("currnetList의 갯수는?", currentList.count)
+        print("currentList 내용을 보자잇~", currentList)
     }
     
     

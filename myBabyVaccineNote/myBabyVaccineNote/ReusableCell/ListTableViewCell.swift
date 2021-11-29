@@ -11,6 +11,8 @@ import SnapKit
 
 class ListTableViewCell: UITableViewCell {
 
+    let identifier = "ListTableViewCell"
+    
     let HospName = UILabel().then{
         $0.font = UIFont(name: "GillSans-SemiBold", size: 16.0)
     }
@@ -29,6 +31,7 @@ class ListTableViewCell: UITableViewCell {
     }
     
     func makeLayout() {
+        
         HospName.snp.makeConstraints{
             $0.top.equalToSuperview().offset(8)
             $0.leading.equalToSuperview().offset(8)
@@ -64,14 +67,17 @@ class ListTableViewCell: UITableViewCell {
     }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        print("이거 불러지나~~~~ 어디보자~~~~")
         contentView.snp.makeConstraints{
             $0.height.equalTo(40)
+            $0.top.leading.trailing.equalToSuperview()
         }
         contentView.addSubview(HospName)
         contentView.addSubview(HospAdr)
         contentView.addSubview(DisName)
         contentView.addSubview(vacName)
         contentView.addSubview(Price)
+        contentView.backgroundColor = .blue
         makeLayout()
     }
     
